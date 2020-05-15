@@ -20,7 +20,7 @@
 
         <!-- Styles -->
         <link href="{{ asset('css/app.css') }}" rel="stylesheet">
-        
+
         <style>
             body {background-color: darkred; margin: 15px; margin-left: 50px; margin-right: 50px}
             td {padding: 0px;}
@@ -153,7 +153,7 @@
                     </tr>
                 </table>
                 <br>
-                <div text-align="center"><a href="paginas/contact_new.html">Naar Contact</a></div>
+                <div text-align="center"><a href="/contact">Naar Contact</a></div>
             </td>
             <td style="width:25px;"></td>
             <td style="width:25px;"></td>
