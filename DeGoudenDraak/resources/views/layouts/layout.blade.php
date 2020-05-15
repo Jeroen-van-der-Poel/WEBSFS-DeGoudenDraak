@@ -47,7 +47,7 @@
                 <img style="vertical-align: middle;" src="pictures/dragon-small-flipped.png" alt="Golden Dragon" height="50px">
             </td>
             <td>
-                <a href="paginas/aanbiedingen.html" style="color:yellow;font-weight:bold;text-decoration: none;">
+                <a href="/offers" style="color:yellow;font-weight:bold;text-decoration: none;">
                     <marquee behavior="scroll" direction="left">
                         Welkom bij De Gouden Draak. Klik op deze tekst om de aanbiedingen van deze week te zien!
                     </marquee>
@@ -153,7 +153,7 @@
                     </tr>
                 </table>
                 <br>
-                <div text-align="center"><a href="/contact">Naar Contact</a></div>
+                <div text-align="center"><a href="/home">Naar Home</a></div>
             </td>
             <td style="width:25px;"></td>
             <td style="width:25px;"></td>
