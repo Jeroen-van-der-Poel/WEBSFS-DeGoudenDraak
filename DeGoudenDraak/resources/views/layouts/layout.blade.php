@@ -153,7 +153,7 @@
                     </tr>
                 </table>
                 <br>
-                <div text-align="center"><a href="paginas/contact_new.html">Naar Contact</a></div>
+                <div text-align="center"><a href="/contact">Naar Contact</a></div>
             </td>
             <td style="width:25px;"></td>
             <td style="width:25px;"></td>
