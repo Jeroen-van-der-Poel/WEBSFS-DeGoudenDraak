@@ -29,5 +29,8 @@ Route::get('/option', 'OrderController@index');
 Route::get('/tablenumber', 'CustomerController@index');
 Route::post('/tablenumber', 'CustomerController@store');
 
+//customer order
+Route::get('/customer-order/{id}', 'CustomerOrderController@index');
+
 //employee
 Route::get('/cashregister/index', 'CashRegisterController@index');
