@@ -31,3 +31,6 @@ Route::post('/tablenumber', 'CustomerController@store');
 
 //employee
 Route::get('/cashregister/index', 'CashRegisterController@index');
+Route::get('/cashregister/dishes', 'DishesController@index');
+Route::get('/cashregister/sales', 'SalesController@index');
+
