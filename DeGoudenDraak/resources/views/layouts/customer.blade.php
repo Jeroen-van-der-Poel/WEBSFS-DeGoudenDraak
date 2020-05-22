@@ -57,12 +57,6 @@
                 <!-- Right Side Of Navbar -->
                 <ul class="navbar-nav ml-auto">
                     <li class="nav-item">
-                        <a class="nav-link" href="" style="color: black">Bestellen</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="" style="color: black">Geschiedenis</a>
-                    </li>
-                    <li class="nav-item">
                         <a class="nav-link" href="/" style="color: black">Terug naar website</a>
                     </li>
                 </ul>
