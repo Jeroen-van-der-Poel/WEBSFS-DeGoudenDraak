@@ -76,3 +76,8 @@
         </div>
     </nav>
 </div>
+
+    <div>
+        @yield("content")
+    </div>
+</body>

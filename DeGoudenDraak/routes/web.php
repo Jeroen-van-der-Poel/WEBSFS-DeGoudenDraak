@@ -21,4 +21,5 @@ Route::get('/menu', 'MenuController@index');
 Route::get('/news', 'NewsController@index');
 Route::get('/contact', 'ContactController@index');
 Route::get('/offers', 'OffersController@index');
-Route::get('/option', 'CashController@index');
+Route::get('/option', 'OrderController@index');
+Route::get('/tablenumber', 'CustomerController@index');
