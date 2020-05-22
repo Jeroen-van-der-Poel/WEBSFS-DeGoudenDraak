@@ -23,3 +23,8 @@ Route::get('/contact', 'ContactController@index');
 Route::get('/offers', 'OffersController@index');
 Route::get('/option', 'OrderController@index');
 Route::get('/tablenumber', 'CustomerController@index');
+Route::get('/cashregister/index', 'CashRegisterController@index');
+
+
+
+

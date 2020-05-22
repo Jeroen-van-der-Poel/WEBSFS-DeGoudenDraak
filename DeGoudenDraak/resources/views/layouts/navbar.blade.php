@@ -40,9 +40,9 @@
     <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
         <div class="container">
             <a class="navbar-brand" href="{{ url('/') }}">
-                <img style="vertical-align: middle;" src="pictures/dragon-small.png" alt="Golden Dragon" height="50px">
+                <img style="vertical-align: middle;" src="../pictures/dragon-small.png" alt="Golden Dragon" height="50px">
                 <span style="font-family:'chinese_takeawayregular'">De Gouden Draak</span>
-                <img style="vertical-align: middle;" src="pictures/dragon-small-flipped.png" alt="Golden Dragon" height="50px">
+                <img style="vertical-align: middle;" src="../pictures/dragon-small-flipped.png" alt="Golden Dragon" height="50px">
             </a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
                 <span class="navbar-toggler-icon"></span>
@@ -71,6 +71,25 @@
                     <li class="nav-item">
                         <a class="nav-link" href="/option" style="color: black">Bestellen</a>
                     </li>
+                    @if(\Illuminate\Support\Facades\Auth::user())
+                        <li class="nav-item dropdown">
+                            <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+                                {{ Auth::user()->name }} <span class="caret"></span>
+                            </a>
+
+                            <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+                                <a class="dropdown-item" href="{{ route('logout') }}"
+                                   onclick="event.preventDefault();
+                                                     document.getElementById('logout-form').submit();">
+                                    {{ __('Logout') }}
+                                </a>
+
+                                <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                                    @csrf
+                                </form>
+                            </div>
+                        </li>
+                    @endif
                 </ul>
             </div>
         </div>
