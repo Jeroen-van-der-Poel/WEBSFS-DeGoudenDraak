@@ -1,4 +1,4 @@
-@extends('layouts.layout')
+@extends('layouts.site')
 
 @section('content')
     <h3>Door de Corona crisis is De Gouden Draak op het moment slechts beperkt open.

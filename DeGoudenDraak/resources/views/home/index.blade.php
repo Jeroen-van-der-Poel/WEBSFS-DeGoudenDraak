@@ -1,4 +1,4 @@
-@extends('layouts.layout')
+@extends('layouts.site')
 
 @section('content')
     <h3>Al jaren is De Gouden Draak een begrip als het gaat om de beste afhaalgerechten in 's-Hertogenbosch.<br>
