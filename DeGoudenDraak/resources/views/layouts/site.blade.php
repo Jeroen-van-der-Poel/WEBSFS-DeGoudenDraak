@@ -58,16 +58,19 @@
                 <!-- Right Side Of Navbar -->
                 <ul class="navbar-nav ml-auto">
                     <li class="nav-item">
-                        <a class="nav-link" href="/contact">Contact</a>
+                        <a class="nav-link" href="/contact" style="color: black">Contact</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="/menu">Menu</a>
+                        <a class="nav-link" href="/menu" style="color: black">Menu</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="/news">Nieuws</a>
+                        <a class="nav-link" href="/news" style="color: black">Nieuws</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="/offers">Aanbiedingen</a>
+                        <a class="nav-link" href="/offers" style="color: black">Aanbiedingen</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/option" style="color: black">Bestellen</a>
                     </li>
                 </ul>
             </div>
