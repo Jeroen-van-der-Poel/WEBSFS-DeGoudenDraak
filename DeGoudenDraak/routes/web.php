@@ -31,10 +31,12 @@ Route::post('/tablenumber', 'CustomerController@store');
 
 //customer order
 Route::get('/customer-order/{id}', 'CustomerOrderController@index');
+Route::post('/customer-order/{id}', 'CustomerOrderController@store');
 
 //employee
 Route::get('/cashregister/index', 'CashRegisterController@index');
 Route::get('/cashregister/dishes', 'DishesController@index');
 Route::get('/cashregister/sales', 'SalesController@index');
 Route::get('/cashregister/alerts', 'AlertsController@index');
+Route::put('/cashregister/alerts/finish-alert/{id}', 'AlertsController@update');
 
