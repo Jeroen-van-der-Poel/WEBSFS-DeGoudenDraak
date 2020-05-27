@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Customer;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class CustomerController extends Controller
 {
@@ -20,8 +21,23 @@ class CustomerController extends Controller
             'tablenumber' => 'required',
         ]);
 
-        Customer::create($data);
+        $customer = DB::table('customers')->where([
+            ['name', '=', request('name')],
+            ['tablenumber', '=', request('tablenumber')],
+        ])->first();
 
-        return redirect('/');
+        if ($customer != null) {
+            return redirect('/customer-order/'.$customer->id);
+        }
+        else{
+            Customer::create($data);
+        }
+
+        $customer2 = DB::table('customers')->where([
+            ['name', '=', request('name')],
+            ['tablenumber', '=', request('tablenumber')],
+        ])->first();
+
+        return redirect('/customer-order/'.$customer2->id);
     }
 }
