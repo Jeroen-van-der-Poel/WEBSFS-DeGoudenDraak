@@ -15,7 +15,7 @@ class CreateDishesTable extends Migration
     {
         Schema::create('dishes', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('dish_category');
+            $table->unsignedBigInteger('dish_category')->nullable();
             $table->unsignedBigInteger('menu_id')->nullable();
             $table->integer('menu_number')->nullable();
             $table->string('menu_addition')->nullable();
