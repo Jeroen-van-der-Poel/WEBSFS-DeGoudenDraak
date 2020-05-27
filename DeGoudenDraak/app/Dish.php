@@ -10,4 +10,9 @@ class Dish extends Model
     {
         return $this->BelongsToMany(User::class)->withPivot('amount', 'sale_date');
     }
+
+    public function menu()
+    {
+        return $this->BelongsTo(Menu::class);
+    }
 }

@@ -6,5 +6,8 @@ use Illuminate\Database\Eloquent\Model;
 
 class Menu extends Model
 {
-    //
+    public function dishes()
+    {
+        return $this->HasMany(Dish::class);
+    }
 }

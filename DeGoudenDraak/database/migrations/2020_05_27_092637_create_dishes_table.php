@@ -24,7 +24,7 @@ class CreateDishesTable extends Migration
             $table->decimal('price');
 
             $table->foreign('dish_category')->references('id')->on('categories')->onDelete('cascade');
-            //$table->foreign('menu_id')->references('id')->on('menus')->onDelete('cascade');
+            $table->foreign('menu_id')->references('id')->on('menus')->onDelete('cascade');
         });
     }
 
