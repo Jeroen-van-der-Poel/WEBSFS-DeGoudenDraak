@@ -33,4 +33,5 @@ Route::post('/tablenumber', 'CustomerController@store');
 Route::get('/cashregister/index', 'CashRegisterController@index');
 Route::get('/cashregister/dishes', 'DishesController@index');
 Route::get('/cashregister/sales', 'SalesController@index');
+Route::get('/cashregister/alerts', 'AlertsController@index');
 
