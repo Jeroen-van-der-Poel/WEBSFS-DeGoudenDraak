@@ -36,4 +36,10 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+
+    public function dishes()
+    {
+        return $this->BelongsToMany(Dish::class)->withPivot('amount', 'sale_date');
+    }
 }
