@@ -20,7 +20,7 @@ class CreateDishesTable extends Migration
             $table->string('menu_addition')->nullable();
             $table->string('name');
             $table->text('description')->nullable();
-            $table->double('price');
+            $table->decimal('price');
 
             $table->foreign('dish_category')->references('id')->on('categories')->onDelete('cascade');
         });
