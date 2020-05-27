@@ -15,7 +15,8 @@ class CreateDishesTable extends Migration
     {
         Schema::create('dishes', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('dish_category')->nullable();
+            $table->unsignedBigInteger('dish_category');
+            $table->unsignedBigInteger('menu_id')->nullable();
             $table->integer('menu_number')->nullable();
             $table->string('menu_addition')->nullable();
             $table->string('name');
@@ -23,6 +24,7 @@ class CreateDishesTable extends Migration
             $table->decimal('price');
 
             $table->foreign('dish_category')->references('id')->on('categories')->onDelete('cascade');
+            //$table->foreign('menu_id')->references('id')->on('menus')->onDelete('cascade');
         });
     }
 
