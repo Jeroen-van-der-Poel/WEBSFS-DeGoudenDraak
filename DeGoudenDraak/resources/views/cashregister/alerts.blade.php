@@ -2,6 +2,11 @@
 
 @section('content')
     <div class="container ">
+        @if(Session::has('success'))
+            <div class="alert alert-success">
+                {{Session::get('success')}}
+            </div>
+        @endif
         <div class="justify-content-center m-5">
             <table id="EventsTable" class="table table-bordered table-striped">
                 <thead>
@@ -13,12 +18,20 @@
                 </tr>
                 </thead>
                 <tbody>
-                <tr>
-                    <td>30-05-2020 20:30</td>
-                    <td>1</td>
-                    <td>Je oma op een bakfiets</td>
-                    <td><a href="/" class="btn btn-danger" style="max-height: 35px; min-height: 35px">Afgehandeld</a></td>
-                </tr>
+                @foreach($alerts as $alert)
+                    <tr>
+                        <td>{{$alert->created_at}}</td>
+                        <td>{{$alert->customer()->pluck('tablenumber')->implode('')}}</td>
+                        <td>{{$alert->customer()->pluck('name')->implode('')}}</td>
+                        <td>
+                            <form method="POST" action="/cashregister/alerts/finish-alert/{{$alert->id}}">
+                                @csrf
+                                {{ method_field('PUT') }}
+                                <input type="submit" value="Afhandelen" class="btn btn-success">
+                            </form>
+                        </td>
+                    </tr>
+                @endforeach
                 </tbody>
             </table>
         </div>
