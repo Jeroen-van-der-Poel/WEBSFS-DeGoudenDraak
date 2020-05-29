@@ -4,6 +4,11 @@
     <div class="container">
         <div class="row">
             <div class="col-lg-12 col-lg-offset-1 m-5">
+                @if(Session::has('fail'))
+                    <div class="alert alert-danger">
+                        {{Session::get('fail')}}
+                    </div>
+                @endif
                 <div class="table-responsive">
                     <div class="card-header">
                         <div class="d-flex justify-content-between">
