@@ -29,4 +29,5 @@ class CustomerOrderController extends Controller
 
         return redirect('/customer-order/'.$id)->with('success', 'U heeft om hulp gevraagd. Er zal zo een medewerker komen.');
     }
+
 }

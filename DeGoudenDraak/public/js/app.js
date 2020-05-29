@@ -1914,9 +1914,40 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
+  props: ['dish', 'customerId'],
   mounted: function mounted() {
     console.log('Component mounted.');
+  },
+  data: function data() {
+    return {
+      amount: '1',
+      order: [],
+      totalorder: []
+    };
+  },
+  methods: {
+    addOrder: function addOrder() {
+      //console.log(this.amount);
+      //console.log(this.dish);
+      //console.log(this.customerId);
+      this.order.push(this.dish, this.amount);
+      this.totalorder.push(this.order);
+      this.order = [];
+      this.AddLocalStorage();
+    },
+    AddLocalStorage: function AddLocalStorage() {
+      var string = JSON.stringify(this.totalorder);
+      localStorage.setItem('Order', string);
+    }
   }
 });
 
@@ -37465,21 +37496,51 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _vm._m(0)
-}
-var staticRenderFns = [
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", [
+  return _c("div", [
+    _c("div", { staticClass: "modal-body" }, [
+      _c("div", { staticClass: "d-flex justify-content-between" }, [
+        _c("h4", [_vm._v("Aantal")]),
+        _vm._v(" "),
+        _c("input", {
+          directives: [
+            {
+              name: "model",
+              rawName: "v-model",
+              value: _vm.amount,
+              expression: "amount"
+            }
+          ],
+          attrs: {
+            type: "number",
+            id: "points",
+            name: "points",
+            min: "1",
+            max: "100",
+            value: "1"
+          },
+          domProps: { value: _vm.amount },
+          on: {
+            input: function($event) {
+              if ($event.target.composing) {
+                return
+              }
+              _vm.amount = $event.target.value
+            }
+          }
+        })
+      ])
+    ]),
+    _vm._v(" "),
+    _c("div", { staticClass: "modal-footer" }, [
       _c("input", {
         staticClass: "btn btn-sm btn-success",
-        attrs: { type: "submit" }
+        attrs: { value: "Toevoegen", "data-dismiss": "modal", type: "submit" },
+        on: { click: _vm.addOrder }
       })
     ])
-  }
-]
+  ])
+}
+var staticRenderFns = []
 render._withStripped = true
 
 

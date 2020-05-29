@@ -19,7 +19,6 @@
     <div class="container">
         <div class="row pt-3">
             <h1>Geschiedenis</h1>
-            <example-component></example-component>
         </div>
     </div>
     <hr>
@@ -41,19 +40,14 @@
                                 <div class="modal-dialog" role="document">
                                     <div class="modal-content">
                                         <div class="modal-header">
-                                            <h5 class="modal-title" id="myModalLabel">Gerecht toevoegen aan order</h5>
+                                            <h5 class="modal-title" id="myModalLabel">{{$dish->name}}</h5>
                                             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                                 <span aria-hidden="true"></span>
                                                 <span class="fas fa-window-close text-danger">X</span>
                                             </button>
                                         </div>
-                                        <div class="modal-body">
-                                            {{$dish->name}}
-                                            <input class="float-right" type="number" id="points" name="points" min="1" max="100" value="1">
-                                        </div>
-                                        <div class="modal-footer">
-                                            <add-order></add-order>
-
+                                        <div>
+                                            <add-order dish="{{$dish->name}}" customer-id="{{$customer->id}}"></add-order>
                                         </div>
                                     </div>
                                 </div>
