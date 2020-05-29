@@ -39,4 +39,7 @@ Route::get('/cashregister/dishes', 'DishesController@index');
 Route::get('/cashregister/sales', 'SalesController@index');
 Route::get('/cashregister/alerts', 'AlertsController@index');
 Route::put('/cashregister/alerts/finish-alert/{id}', 'AlertsController@update');
+Route::get('/cashregister/users', 'UsersController@index');
+Route::post('/cashregister/users', 'UsersController@store');
+Route::delete('/cashregister/users/{user}', 'UsersController@destroy');
 
