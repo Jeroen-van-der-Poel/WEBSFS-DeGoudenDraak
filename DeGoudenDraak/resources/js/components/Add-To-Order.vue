@@ -14,10 +14,10 @@
 
 <script>
     export default {
-        props: ['dish', 'customerId'],
+        props: ['dish'],
 
         mounted() {
-            console.log('Component mounted.')
+
         },
 
         data: function() {
@@ -28,16 +28,43 @@
             };
         },
 
+        created() {
+            localStorage.clear();
+        },
+
         methods: {
             addOrder: function(){
-                //console.log(this.amount);
-                //console.log(this.dish);
-                //console.log(this.customerId);
-                this.order.push(this.dish, this.amount);
+                if(localStorage.getItem('Order') != null){
+                    this.totalorder = JSON.parse(localStorage.getItem('Order'));
+                }
+
+                let test = JSON.parse(this.dish);
+                this.order.push({"id":test.id, "name":test.name, "amount":this.amount, "price":(test.price * this.amount)});
                 this.totalorder.push(this.order);
-                this.order = [];
+
+                let table = document.getElementById("EventsTable");
+                let body = document.getElementById("body");
+                    let row = body.insertRow();
+                    let cell = row.insertCell(0);
+                    let name2 = test.name;
+                    cell.innerText = name2;
+                    let cell2 = row.insertCell(1);
+                    let amount2 = this.amount;
+                    cell2.innerText = amount2;
+                    let cell3 = row.insertCell(2);
+                    let price2 = (test.price * this.amount);
+                    cell3.innerText = "€" + price2;
+                    let cell4 = row.insertCell(3);
+                        let btn = document.createElement('input');
+                        btn.type = "button";
+                        btn.className = "btn btn-danger";
+                        btn.value = "-";
+                    cell4.appendChild(btn);
+                table.appendChild(body);
 
                 this.AddLocalStorage();
+                this.amount = '1';
+                this.order = [];
             },
 
             AddLocalStorage: function () {
@@ -45,8 +72,6 @@
                 localStorage.setItem('Order', string);
             }
         },
-
     }
-
 
 </script>

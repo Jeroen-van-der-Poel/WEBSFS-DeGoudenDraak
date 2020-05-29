@@ -20,6 +20,7 @@ window.Vue = require('vue');
 // files.keys().map(key => Vue.component(key.split('/').pop().split('.')[0], files(key).default))
 
 Vue.component('add-order', require('./components/Add-To-Order.vue').default);
+Vue.component('pay-order', require('./components/Pay-Order.vue').default);
 
 /**
  * Next, we will create a fresh Vue application instance and attach it to
