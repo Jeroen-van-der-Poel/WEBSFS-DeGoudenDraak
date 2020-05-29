@@ -1,6 +1,7 @@
 @extends('layouts.customer')
 
 @section('content')
+    <div>
     <div class="container">
         @if(Session::has('success'))
             <div class="alert alert-success">
@@ -40,18 +41,14 @@
                                 <div class="modal-dialog" role="document">
                                     <div class="modal-content">
                                         <div class="modal-header">
-                                            <h5 class="modal-title" id="myModalLabel">Gerecht toevoegen aan order</h5>
+                                            <h5 class="modal-title" id="myModalLabel">{{$dish->name}}</h5>
                                             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                                 <span aria-hidden="true"></span>
                                                 <span class="fas fa-window-close text-danger">X</span>
                                             </button>
                                         </div>
-                                        <div class="modal-body">
-                                            {{$dish->name}}
-                                            <input class="float-right" type="number" id="points" name="points" min="1" max="100" value="1">
-                                        </div>
-                                        <div class="modal-footer">
-                                            <input class="btn btn-sm btn-success" type="submit">
+                                        <div>
+                                            <add-order dish="{{$dish}}"></add-order>
                                         </div>
                                     </div>
                                 </div>
@@ -77,33 +74,21 @@
                 <table id="EventsTable" class="table table-bordered table-striped">
                     <thead>
                     <tr>
-                        <th>Nummer</th>
                         <th>Naam</th>
                         <th>Aantal</th>
                         <th>Prijs</th>
                         <th>Operatie</th>
                     </tr>
                     </thead>
-                    <tbody>
-                    <tr>
-                        <td>test</td>
-                        <td>test</td>
-                        <td>test</td>
-                        <td>test</td>
-                        <td>
-                            <a href="/" class="btn btn-danger" style="max-height: 35px; min-height: 35px">-</a>
-                        </td>
-                    </tr>
+                    <tbody id="body">
+
                     </tbody>
                 </table>
                 <hr>
-                <div class="col-sm-3 justify-content-center align-self-end">
-                    <h4 class="d-flex">Totaal: <p class="pl-2">$0,00</p></h4>
+                <div>
+                    <pay-order customer-id="{{$customer->id}}"></pay-order>
                 </div>
-                <span>
-                    <a href="/" class="btn btn-danger" style="max-height: 35px; min-height: 35px">Verwijderen</a>
-                    <a href="/" class="btn btn-success" style="max-height: 35px; min-height: 35px">Afrekenen</a>
-                </span>
             </div>
         </div>
+    </div>
 @endsection
