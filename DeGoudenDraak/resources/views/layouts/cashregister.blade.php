@@ -65,12 +65,21 @@
                     <li class="nav-item">
                         <a class="nav-link" href="/cashregister/dishes" style="color: black">Gerechten</a>
                     </li>
+                    @if(auth()->user() && auth()->user()->hasRole("Admin") || auth()->user()->hasRole("Cashier"))
                     <li class="nav-item">
                         <a class="nav-link" href="/cashregister/sales" style="color: black">Verkoop Overzicht</a>
                     </li>
+                    @endif
+                    @if(auth()->user() && auth()->user()->hasRole("Admin") || auth()->user()->hasRole("Waitress"))
                     <li class="nav-item">
                         <a class="nav-link" href="/cashregister/alerts" style="color: black">Notificaties</a>
                     </li>
+                    @endif
+                    @if(auth()->user() && auth()->user()->hasRole("Admin"))
+                    <li class="nav-item">
+                        <a class="nav-link" href="/cashregister/users" style="color: black">Gebruikers</a>
+                    </li>
+                    @endif
                     @if(\Illuminate\Support\Facades\Auth::user())
                         <li class="nav-item dropdown">
                             <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
