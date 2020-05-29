@@ -16,6 +16,7 @@ use Illuminate\Support\Facades\Route;
 Auth::routes();
 
 Route::get('/', 'HomeController@index')->name('home');
+Route::get('/auth/unauthorized', 'UnauthorizedController@index');
 
 //home
 Route::get('/home', 'HomeController@index')->name('home');
@@ -36,10 +37,21 @@ Route::post('/customer-order/{id}', 'CustomerOrderController@store');
 //employee
 Route::get('/cashregister/index', 'CashRegisterController@index');
 Route::get('/cashregister/dishes', 'DishesController@index');
-Route::get('/cashregister/sales', 'SalesController@index');
-Route::get('/cashregister/alerts', 'AlertsController@index');
-Route::put('/cashregister/alerts/finish-alert/{id}', 'AlertsController@update');
-Route::get('/cashregister/users', 'UsersController@index');
-Route::post('/cashregister/users', 'UsersController@store');
-Route::delete('/cashregister/users/{user}', 'UsersController@destroy');
 
+// Routes only able to be used by Admin
+Route::group(['middleware' => 'admin'], function() {
+    Route::get('/cashregister/users', 'UsersController@index');
+    Route::post('/cashregister/users', 'UsersController@store');
+    Route::delete('/cashregister/users/{user}', 'UsersController@destroy');
+});
+
+// Routes only able to be used by Waitress
+Route::group(['middleware' => 'waitress'], function() {
+    Route::get('/cashregister/alerts', 'AlertsController@index');
+    Route::put('/cashregister/alerts/finish-alert/{id}', 'AlertsController@update');
+});
+
+// Routes only able to be used by Cashier
+Route::group(['middleware' => 'cashier'], function() {
+    Route::get('/cashregister/sales', 'SalesController@index');
+});
