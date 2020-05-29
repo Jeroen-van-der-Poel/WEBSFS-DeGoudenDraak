@@ -19,6 +19,7 @@
     <div class="container">
         <div class="row pt-3">
             <h1>Geschiedenis</h1>
+            <example-component></example-component>
         </div>
     </div>
     <hr>
@@ -51,7 +52,8 @@
                                             <input class="float-right" type="number" id="points" name="points" min="1" max="100" value="1">
                                         </div>
                                         <div class="modal-footer">
-                                            <input class="btn btn-sm btn-success" type="submit">
+                                            <add-order></add-order>
+
                                         </div>
                                     </div>
                                 </div>
