@@ -37677,7 +37677,7 @@ var staticRenderFns = [
       [
         _c("h4", { staticClass: "d-flex" }, [
           _vm._v("Totaal: "),
-          _c("p", { staticClass: "pl-2" }, [_vm._v("$0,00")])
+          _c("p", { staticClass: "pl-2" }, [_vm._v("€0,00")])
         ])
       ]
     )

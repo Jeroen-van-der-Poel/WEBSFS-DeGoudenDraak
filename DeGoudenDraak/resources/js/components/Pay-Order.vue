@@ -1,7 +1,7 @@
 <template>
     <div>
         <div class="col-sm-3 justify-content-center align-self-end">
-            <h4 class="d-flex">Totaal: <p class="pl-2">$0,00</p></h4>
+            <h4 class="d-flex">Totaal: <p class="pl-2">€0,00</p></h4>
         </div>
         <span>
             <button class="btn btn-danger" style="max-height: 35px; min-height: 35px"  @click="RemoveOrder"> Verwijderen</button>
