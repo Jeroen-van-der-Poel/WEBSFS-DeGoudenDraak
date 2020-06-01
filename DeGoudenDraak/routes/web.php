@@ -37,6 +37,8 @@ Route::post('/customer-order/{id}', 'CustomerOrderController@store');
 //employee
 Route::get('/cashregister/index', 'CashRegisterController@index');
 Route::get('/cashregister/dishes', 'DishesController@index');
+Route::patch('/FilterCashRegisterDishes','CashRegisterController@filterDishes');
+Route::patch('/FilterCashRegisterCategories','CashRegisterController@filterCategories');
 
 // Routes only able to be used by Admin
 Route::group(['middleware' => 'admin'], function() {

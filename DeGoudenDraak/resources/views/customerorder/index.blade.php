@@ -34,6 +34,7 @@
                     <div class="shadow" style="width: 100%; background: red; color: yellow; text-align: center">
                         <h2>{{$category->name}}</h2>
                     </div>
+
                     @foreach($dishes as $dish)
                         @if($dish->dish_category == $category->id)
                         <!-- Modal -->
