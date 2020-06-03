@@ -51,37 +51,4 @@ class CustomerOrderController extends Controller
         return redirect('/customer-order/'.$id)->with('success', 'U heeft om hulp gevraagd. Er zal zo een medewerker komen.');
     }
 
-    public function filterDishes($id){
-
-        $data = request()->validate([
-            'filter' => 'required'
-        ]);
-
-        $customer = Customer::findorfail($id);
-
-        $dishes = Dish::where('name',"LIKE", "%" . $data['filter'] . "%")->orWhere('menu_number',"LIKE", "%" . $data['filter']. "%")->orderBy('id', 'asc')->get();
-        $dishCategories = array();
-        foreach($dishes as $dish){
-            if(!in_array($dish->dish_category, $dishCategories)){
-                array_push($dishCategories, $dish->dish_category);
-            }
-            $categories = Category::whereIn('id' ,$dishCategories)->get();
-        }
-
-        return view('/customer-order/'.$id, compact('customer', 'categories', 'dishes'));
-    }
-
-    public function filterCategories($id){
-
-        $data = request()->validate([
-            'filter' => 'required'
-        ]);
-
-        $customer = Customer::findorfail($id);
-
-        $categories = Category::where('name',"LIKE", "%" . $data['filter'] . "%")->orderBy('id', 'asc')->get();
-        $dishes = Dish::all();
-
-        return view('/customer-order/'.$id, compact('customer', 'categories', 'dishes'));
-    }
 }
