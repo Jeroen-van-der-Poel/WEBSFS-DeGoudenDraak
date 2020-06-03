@@ -47,10 +47,8 @@
             },
             CustomerOrder() {
                 let order = localStorage.getItem('Order');
-                alert(order)
                 axios.post('/customer-order/order/' + this.customerId, {order1: order})
                     .then(function (response) {
-                        //window.location = response.data.redirect;
                         window.location.reload();
                     });
                 localStorage.clear();
