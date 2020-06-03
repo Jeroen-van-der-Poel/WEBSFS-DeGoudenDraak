@@ -40,7 +40,7 @@ class User extends Authenticatable
 
     public function dishes()
     {
-        return $this->BelongsToMany(Dish::class)->withPivot('amount');
+        return $this->BelongsToMany(Dish::class)->withPivot('amount', 'sale_date');
     }
 
     public function roles()

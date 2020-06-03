@@ -24,6 +24,7 @@ class CustomerOrderController extends Controller
     public function store($id, Request $request)
     {
         $customer = Customer::findorfail($id);
+        $now = Carbon::now();
 
         $order = collect(json_decode($request->get('order1'), true));
 
@@ -33,7 +34,7 @@ class CustomerOrderController extends Controller
                $dishes = Dish::find($dish['id']);
                $amount = $dish['amount'];
 
-               $dishes->customers()->save($customer, ['amount'=>$amount]);
+               $dishes->customers()->save($customer, ['amount'=>$amount, 'sale_date'=>$now]);
            }
        }
 

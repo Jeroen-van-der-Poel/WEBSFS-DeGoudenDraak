@@ -18,7 +18,7 @@ class CreateCustomerDishTable extends Migration
             $table->unsignedBigInteger('customer_id');
             $table->unsignedBigInteger('dish_id');
             $table->integer('amount');
-            $table->timestamps();
+            $table->dateTime('sale_date');
 
             $table->foreign('customer_id')->references('id')->on('customers')->onDelete('cascade');
             $table->foreign('dish_id')->references('id')->on('dishes')->onDelete('cascade');

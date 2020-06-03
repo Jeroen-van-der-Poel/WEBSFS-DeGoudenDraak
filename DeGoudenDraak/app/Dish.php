@@ -18,6 +18,6 @@ class Dish extends Model
 
     public function customers()
     {
-        return $this->BelongsToMany(Customer::class, 'customer_dish')->withPivot('amount');
+        return $this->BelongsToMany(Customer::class, 'customer_dish')->withPivot('amount', 'sale_date');
     }
 }
