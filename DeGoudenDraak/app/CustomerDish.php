@@ -13,7 +13,7 @@ class CustomerDish extends Model
         return $this->belongsTo(Customer::class, 'customer_id', 'id');
     }
 
-    public function dishes()
+    public function dish()
     {
         return $this->belongsTo(Dish::class, 'dish_id', 'id');
     }

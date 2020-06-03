@@ -38,15 +38,15 @@
                 </tr>
                 </thead>
                 <tbody>
-                <tr>
-                    @foreach($customerOrders as $customerOrder)
-                        <td>{{$customerOrder->id}}</td>
-                        <td>test</td>
-                        <td>€ test</td>
-                        <td>5</td>
-                        <td>€ test</td>
-                    @endforeach
-                </tr>
+                @foreach($customerOrders as $customerOrder)
+                    <tr>
+                        <td>{{$customerOrder->sale_date}}</td>
+                        <td>{{$customerOrder->dish->name}}</td>
+                        <td>€ {{$customerOrder->dish->price}}</td>
+                        <td>{{$customerOrder->amount}}</td>
+                        <td>€ {{$customerOrder->amount * $customerOrder->dish->price}}</td>
+                    </tr>
+                @endforeach
                 </tbody>
             </table>
         </div>
