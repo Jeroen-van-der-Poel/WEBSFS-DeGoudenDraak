@@ -1928,7 +1928,6 @@ __webpack_require__.r(__webpack_exports__);
   data: function data() {
     return {
       amount: '1',
-      order: [],
       totalorder: []
     };
   },
@@ -1942,13 +1941,12 @@ __webpack_require__.r(__webpack_exports__);
       }
 
       var test = JSON.parse(this.dish);
-      this.order.push({
+      this.totalorder.push({
         "id": test.id,
         "name": test.name,
         "amount": this.amount,
         "price": test.price * this.amount
       });
-      this.totalorder.push(this.order);
       var table = document.getElementById("EventsTable");
       var body = document.getElementById("body");
       var row = body.insertRow();
@@ -1970,7 +1968,6 @@ __webpack_require__.r(__webpack_exports__);
       table.appendChild(body);
       this.AddLocalStorage();
       this.amount = '1';
-      this.order = [];
     },
     AddLocalStorage: function AddLocalStorage() {
       var string = JSON.stringify(this.totalorder);
@@ -2003,18 +2000,27 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 /* harmony default export */ __webpack_exports__["default"] = ({
-  props: ['customerId'],
+  props: {
+    iscustomer: Boolean,
+    customerId: String
+  },
   mounted: function mounted() {},
   data: function data() {
     return {
-      totalorder: ''
+      totalorder: '',
+      totalprice: ''
     };
   },
   methods: {
-    PayOrder: function PayOrder() {},
+    PayOrder: function PayOrder() {
+      if (this.iscustomer) {
+        this.CustomerOrder();
+      } else {
+        this.UserOrder();
+      }
+    },
     RemoveOrder: function RemoveOrder() {
       this.totalorder = JSON.parse(localStorage.getItem('Order'));
-      console.log(this.totalorder);
 
       if (this.totalorder != null) {
         this.totalorder = [];
@@ -2025,7 +2031,19 @@ __webpack_require__.r(__webpack_exports__);
           body.removeChild(body.firstChild);
         }
       }
-    }
+    },
+    CustomerOrder: function CustomerOrder() {
+      var order = localStorage.getItem('Order');
+      alert(order);
+      axios.post('/customer-order/order/' + this.customerId, {
+        order1: order
+      }).then(function (response) {
+        //window.location = response.data.redirect;
+        window.location.reload();
+      });
+      localStorage.clear();
+    },
+    UserOrder: function UserOrder() {}
   }
 });
 
@@ -37659,7 +37677,7 @@ var render = function() {
         {
           staticClass: "btn btn-success",
           staticStyle: { "max-height": "35px", "min-height": "35px" },
-          on: { click: _vm.RemoveOrder }
+          on: { click: _vm.PayOrder }
         },
         [_vm._v(" Afrekenen")]
       )

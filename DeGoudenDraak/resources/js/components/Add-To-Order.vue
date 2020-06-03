@@ -23,7 +23,6 @@
         data: function() {
             return{
                 amount: '1',
-                order: [],
                 totalorder: [],
             };
         },
@@ -39,8 +38,7 @@
                 }
 
                 let test = JSON.parse(this.dish);
-                this.order.push({"id":test.id, "name":test.name, "amount":this.amount, "price":(test.price * this.amount)});
-                this.totalorder.push(this.order);
+                this.totalorder.push({"id":test.id, "name":test.name, "amount":this.amount, "price":(test.price * this.amount)});
 
                 let table = document.getElementById("EventsTable");
                 let body = document.getElementById("body");
@@ -64,7 +62,6 @@
 
                 this.AddLocalStorage();
                 this.amount = '1';
-                this.order = [];
             },
 
             AddLocalStorage: function () {

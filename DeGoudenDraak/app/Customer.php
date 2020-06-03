@@ -15,6 +15,6 @@ class Customer extends Model
 
     public function dishes()
     {
-        return $this->BelongsToMany(Dish::class)->withPivot('amount', 'sale_date');
+        return $this->BelongsToMany(Dish::class)->withPivot('amount');
     }
 }

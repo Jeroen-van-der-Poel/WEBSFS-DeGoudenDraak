@@ -32,7 +32,8 @@ Route::post('/tablenumber', 'CustomerController@store');
 
 //customer order
 Route::get('/customer-order/{id}', 'CustomerOrderController@index');
-Route::post('/customer-order/{id}', 'CustomerOrderController@store');
+Route::post('/customer-order/order/{id}', 'CustomerOrderController@store');
+Route::post('/customer-order/{id}', 'CustomerOrderController@help');
 
 //employee
 Route::get('/cashregister/index', 'CashRegisterController@index');

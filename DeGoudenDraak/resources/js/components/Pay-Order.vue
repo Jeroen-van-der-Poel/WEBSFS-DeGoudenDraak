@@ -5,14 +5,17 @@
         </div>
         <span>
             <button class="btn btn-danger" style="max-height: 35px; min-height: 35px"  @click="RemoveOrder"> Verwijderen</button>
-            <button class="btn btn-success" style="max-height: 35px; min-height: 35px"  @click="RemoveOrder"> Afrekenen</button>
+            <button class="btn btn-success" style="max-height: 35px; min-height: 35px"  @click="PayOrder"> Afrekenen</button>
         </span>
     </div>
 </template>
 
 <script>
     export default {
-        props: ['customerId'],
+        props: {
+                iscustomer: Boolean,
+                customerId: String,
+                },
 
         mounted() {
 
@@ -21,16 +24,22 @@
         data: function() {
             return{
                 totalorder: '',
+                totalprice: '',
             };
         },
 
         methods: {
-            PayOrder: function () {
-
+            PayOrder() {
+                if(this.iscustomer){
+                    this.CustomerOrder();
+                }
+                else{
+                    this.UserOrder();
+                }
             },
-            RemoveOrder: function () {
+            RemoveOrder() {
                 this.totalorder = JSON.parse(localStorage.getItem('Order'));
-                console.log(this.totalorder)
+
                 if(this.totalorder != null){
                     this.totalorder = [];
                     localStorage.clear();
@@ -39,9 +48,20 @@
                         body.removeChild(body.firstChild);
                     }
                 }
+            },
+            CustomerOrder() {
+                let order = localStorage.getItem('Order');
+                alert(order)
+                axios.post('/customer-order/order/' + this.customerId, {order1: order})
+                    .then(function (response) {
+                        //window.location = response.data.redirect;
+                        window.location.reload();
+                    });
+                localStorage.clear();
+            },
+            UserOrder() {
+
             }
         }
     }
 </script>
-
-<

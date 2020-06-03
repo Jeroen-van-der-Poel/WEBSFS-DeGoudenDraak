@@ -8,7 +8,7 @@ class Dish extends Model
 {
     public function users()
     {
-        return $this->BelongsToMany(User::class)->withPivot('amount', 'sale_date');
+        return $this->BelongsToMany(User::class)->withPivot('amount');
     }
 
     public function menu()
@@ -18,6 +18,6 @@ class Dish extends Model
 
     public function customers()
     {
-        return $this->BelongsToMany(Customer::class)->withPivot('amount', 'sale_date');
+        return $this->BelongsToMany(Customer::class, 'customer_dish')->withPivot('amount');
     }
 }

@@ -7,6 +7,7 @@ use App\Customer;
 use App\Dish;
 use App\CustomerHelp;
 use App\Http\Controllers\Controller;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 
 class CustomerOrderController extends Controller
@@ -20,7 +21,27 @@ class CustomerOrderController extends Controller
         return view('customerorder/index', compact('customer', 'categories', 'dishes'));
     }
 
-    public function store($id)
+    public function store($id, Request $request)
+    {
+        $customer = Customer::findorfail($id);
+
+        $order = collect(json_decode($request->get('order1'), true));
+
+       if($order != null){
+           foreach($order->unique('id') as $dish)
+           {
+               $dishes = Dish::find($dish['id']);
+               $amount = $dish['amount'];
+
+               $dishes->customers()->save($customer, ['amount'=>$amount]);
+           }
+       }
+
+       //return ['redirect' => route('/customer-order/', $id)];
+        return redirect('/customer-order/'.$id);
+    }
+
+    public function help($id)
     {
         $customer = Customer::findorfail($id);
         $help = new CustomerHelp();

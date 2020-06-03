@@ -86,7 +86,7 @@
                 </table>
                 <hr>
                 <div>
-                    <pay-order customer-id="{{$customer->id}}"></pay-order>
+                    <pay-order iscustomer customer-id="{{$customer->id}}"></pay-order>
                 </div>
             </div>
         </div>
