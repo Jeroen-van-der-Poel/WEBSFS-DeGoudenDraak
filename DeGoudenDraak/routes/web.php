@@ -33,6 +33,8 @@ Route::post('/tablenumber', 'CustomerController@store');
 //customer order
 Route::get('/customer-order/{id}', 'CustomerOrderController@index');
 Route::post('/customer-order/{id}', 'CustomerOrderController@store');
+Route::patch('/FilterCustomerOrderDishes','CashRegisterController@filterDishes');
+Route::patch('/FilterCustomerOrderCategories','CustomerOrderController@filterCategories');
 
 //employee
 Route::get('/cashregister/index', 'CashRegisterController@index');

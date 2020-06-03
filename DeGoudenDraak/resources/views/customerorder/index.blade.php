@@ -30,6 +30,44 @@
     </div>
         <div class="row d-flex justify-content-center mr-5 ml-5 mb-5">
             <div class="col-sm-8 d-flex flex-wrap justify-content-center" style="border-right: black 1px solid">
+                <div class="row d-flex justify-content-center">
+                    <form action="/FilterCashRegisterDishes" method="POST">
+                        @method('PATCH')
+                        {{@csrf_field()}}
+                        <div class="modal-body">
+                            <div class="form-group">
+                                <label for="Points">Zoekcriteria Gerechten</label>
+                                <input title="Filter op alle gerechten via de criteria; Naam en Beschrijving." type="text" class="form-control" name="filter" id="filter" required>
+                            </div>
+                        </div>
+                        <div class="modal-footer">
+                            <a href="/customer-order/{{$customer->id}}"><button title="Laat alle gerechten weer zien nadat er gefilterd is via de zoekcriteria en zoekfunctie." type="button"  class="btn btn-secondary" data-dismiss="modal"> Laat alles weer zien</button></a>
+                            <div class="form-group">
+                                <input title="Zoek op basis van de ingevulde zoekcriteria." type="submit" class="btn btn-success" value="Zoeken">
+                            </div>
+                        </div>
+                    </form>
+                </div>
+
+                <div class="row d-flex justify-content-center pl-4">
+                    <form action="/FilterCashRegisterCategories" method="POST">
+                        @method('PATCH')
+                        {{@csrf_field()}}
+                        <div class="modal-body">
+                            <div class="form-group">
+                                <label for="Points">Zoekcriteria Categorieën</label>
+                                <input title="Filter op alle categorieën via de criteria; Naam." type="text" class="form-control" name="filter" id="filter" required>
+                            </div>
+                        </div>
+                        <div class="modal-footer">
+                            <a href="/customer-order/{{$customer->id}}"><button title="Laat alle categorieën weer zien nadat er gefilterd is via de zoekcriteria en zoekfunctie." type="button"  class="btn btn-secondary" data-dismiss="modal"> Laat alles weer zien</button></a>
+                            <div class="form-group">
+                                <input title="Zoek op basis van de ingevulde zoekcriteria." type="submit" class="btn btn-success" value="Zoeken">
+                            </div>
+                        </div>
+                    </form>
+                </div>
+
                 @foreach($categories as $category)
                     <div class="shadow" style="width: 100%; background: red; color: yellow; text-align: center">
                         <h2>{{$category->name}}</h2>
