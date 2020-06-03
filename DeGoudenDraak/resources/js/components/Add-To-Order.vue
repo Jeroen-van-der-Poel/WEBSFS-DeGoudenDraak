@@ -59,7 +59,17 @@
                         btn.className = "btn btn-danger";
                         btn.id = dishes.id;
                         btn.value = "-";
-                        btn.onClick = this.RemoveDish(dishes.id);
+                        btn.onclick = function(){
+                            alert(dishes.id);
+                            let orders = JSON.parse(localStorage.getItem('Order'));
+                            for(let i = 0; i < orders; i++){
+                                if(orders[i].id === id){
+                                    orders.slice(orders[i], 1);
+
+                                    localStorage.setIem('Order', JSON.stringify(orders));
+                                }
+                            }
+                        }
                     cell4.appendChild(btn);
                 table.appendChild(body);
 
@@ -73,15 +83,12 @@
                 total = total.toFixed(2);
                 document.getElementById("totalprice").innerText = total;
             },
-
-            AddLocalStorage: function () {
+            AddLocalStorage() {
                 let string = JSON.stringify(this.totalorder);
                 localStorage.setItem('Order', string);
-            }
-        },
-        RemoveDish(id){
-        
+            },
         }
+
     }
 
 </script>

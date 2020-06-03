@@ -1966,7 +1966,19 @@ __webpack_require__.r(__webpack_exports__);
       btn.className = "btn btn-danger";
       btn.id = dishes.id;
       btn.value = "-";
-      btn.onClick = this.RemoveDish(dishes.id);
+
+      btn.onclick = function () {
+        alert(dishes.id);
+        var orders = JSON.parse(localStorage.getItem('Order'));
+
+        for (var i = 0; i < orders; i++) {
+          if (orders[i].id === id) {
+            orders.slice(orders[i], 1);
+            localStorage.setIem('Order', JSON.stringify(orders));
+          }
+        }
+      };
+
       cell4.appendChild(btn);
       table.appendChild(body);
       this.AddLocalStorage();
@@ -1981,8 +1993,7 @@ __webpack_require__.r(__webpack_exports__);
       var string = JSON.stringify(this.totalorder);
       localStorage.setItem('Order', string);
     }
-  },
-  RemoveDish: function RemoveDish(id) {}
+  }
 });
 
 /***/ }),
