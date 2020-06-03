@@ -62,6 +62,9 @@
 
                 this.AddLocalStorage();
                 this.amount = '1';
+
+                let totalprice = document.getElementById('totalprice');
+                totalprice += price2;
             },
 
             AddLocalStorage: function () {

@@ -85,6 +85,9 @@
                     </tbody>
                 </table>
                 <hr>
+                <div class="col-sm-3 justify-content-center align-self-end">
+                    <h5 class="d-flex">Totaal: €<p class="pl-2" id="totalprice"></p></h5>
+                </div>
                 <div>
                     <pay-order iscustomer customer-id="{{$customer->id}}"></pay-order>
                 </div>

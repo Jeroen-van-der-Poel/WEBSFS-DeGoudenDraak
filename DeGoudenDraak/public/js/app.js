@@ -1968,6 +1968,8 @@ __webpack_require__.r(__webpack_exports__);
       table.appendChild(body);
       this.AddLocalStorage();
       this.amount = '1';
+      var totalprice = document.getElementById('totalprice');
+      totalprice += price2;
     },
     AddLocalStorage: function AddLocalStorage() {
       var string = JSON.stringify(this.totalorder);
@@ -1996,9 +1998,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
-//
 /* harmony default export */ __webpack_exports__["default"] = ({
   props: {
     iscustomer: Boolean,
@@ -2007,8 +2006,7 @@ __webpack_require__.r(__webpack_exports__);
   mounted: function mounted() {},
   data: function data() {
     return {
-      totalorder: '',
-      totalprice: ''
+      totalorder: ''
     };
   },
   methods: {
@@ -37659,8 +37657,6 @@ var render = function() {
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
   return _c("div", [
-    _vm._m(0),
-    _vm._v(" "),
     _c("span", [
       _c(
         "button",
@@ -37684,23 +37680,7 @@ var render = function() {
     ])
   ])
 }
-var staticRenderFns = [
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c(
-      "div",
-      { staticClass: "col-sm-3 justify-content-center align-self-end" },
-      [
-        _c("h4", { staticClass: "d-flex" }, [
-          _vm._v("Totaal: "),
-          _c("p", { staticClass: "pl-2" }, [_vm._v("€0,00")])
-        ])
-      ]
-    )
-  }
-]
+var staticRenderFns = []
 render._withStripped = true
 
 
