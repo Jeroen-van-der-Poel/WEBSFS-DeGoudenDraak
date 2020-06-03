@@ -60,13 +60,11 @@
                         btn.id = dishes.id;
                         btn.value = "-";
                         btn.onclick = function(){
-                            alert(dishes.id);
                             let orders = JSON.parse(localStorage.getItem('Order'));
-                            for(let i = 0; i < orders; i++){
-                                if(orders[i].id === id){
-                                    orders.slice(orders[i], 1);
-
-                                    localStorage.setIem('Order', JSON.stringify(orders));
+                            for(let i = 0; i < orders.length; i++){
+                                if(orders[i].id === dishes.id){
+                                    alert(orders[i].id)
+                                    localStorage.removeItem(orders[i]);
                                 }
                             }
                         }
