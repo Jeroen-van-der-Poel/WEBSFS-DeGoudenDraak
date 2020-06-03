@@ -39,11 +39,13 @@
                 </thead>
                 <tbody>
                 <tr>
-                    <td>test</td>
-                    <td>test</td>
-                    <td>€ test</td>
-                    <td>5</td>
-                    <td>€ test</td>
+                    @foreach($customerOrders as $customerOrder)
+                        <td>{{$customerOrder->id}}</td>
+                        <td>test</td>
+                        <td>€ test</td>
+                        <td>5</td>
+                        <td>€ test</td>
+                    @endforeach
                 </tr>
                 </tbody>
             </table>
