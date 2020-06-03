@@ -1969,7 +1969,7 @@ __webpack_require__.r(__webpack_exports__);
       this.AddLocalStorage();
       this.amount = '1';
       var totalprice = document.getElementById('totalprice');
-      totalprice += price2;
+      totalprice.innerText += price2;
     },
     AddLocalStorage: function AddLocalStorage() {
       var string = JSON.stringify(this.totalorder);
@@ -2032,11 +2032,9 @@ __webpack_require__.r(__webpack_exports__);
     },
     CustomerOrder: function CustomerOrder() {
       var order = localStorage.getItem('Order');
-      alert(order);
       axios.post('/customer-order/order/' + this.customerId, {
         order1: order
       }).then(function (response) {
-        //window.location = response.data.redirect;
         window.location.reload();
       });
       localStorage.clear();

@@ -64,7 +64,7 @@
                 this.amount = '1';
 
                 let totalprice = document.getElementById('totalprice');
-                totalprice += price2;
+                totalprice.innerText += price2;
             },
 
             AddLocalStorage: function () {

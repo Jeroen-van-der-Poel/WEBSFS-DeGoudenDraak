@@ -38,7 +38,6 @@ class CustomerOrderController extends Controller
            }
        }
 
-       //return ['redirect' => route('/customer-order/', $id)];
         return redirect('/customer-order/'.$id);
     }
 
