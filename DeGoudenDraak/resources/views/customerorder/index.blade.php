@@ -124,8 +124,8 @@
                     </tbody>
                 </table>
                 <hr>
-                <div class="col-sm-3 justify-content-center align-self-end">
-                    <h5 class="d-flex">Totaal: €<p id="totalprice"></p></h5>
+                <div class="col-sm-4 justify-content-center align-self-end">
+                    <h4 class="d-flex">Totaal: €<span id="totalprice">0</span> </h4>
                 </div>
                 <div>
                     <pay-order iscustomer customer-id="{{$customer->id}}"></pay-order>

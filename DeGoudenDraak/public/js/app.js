@@ -1940,42 +1940,49 @@ __webpack_require__.r(__webpack_exports__);
         this.totalorder = JSON.parse(localStorage.getItem('Order'));
       }
 
-      var test = JSON.parse(this.dish);
+      var dishes = JSON.parse(this.dish);
       this.totalorder.push({
-        "id": test.id,
-        "name": test.name,
+        "id": dishes.id,
+        "name": dishes.name,
         "amount": this.amount,
-        "price": test.price * this.amount
+        "price": dishes.price * this.amount
       });
       var table = document.getElementById("EventsTable");
       var body = document.getElementById("body");
       var row = body.insertRow();
       var cell = row.insertCell(0);
-      var name2 = test.name;
+      var name2 = dishes.name;
       cell.innerText = name2;
       var cell2 = row.insertCell(1);
       var amount2 = this.amount;
       cell2.innerText = amount2;
       var cell3 = row.insertCell(2);
-      var price2 = test.price * this.amount;
+      var price2 = dishes.price * this.amount;
+      price2 = price2.toFixed(2);
       cell3.innerText = "€" + price2;
       var cell4 = row.insertCell(3);
       var btn = document.createElement('input');
       btn.type = "button";
       btn.className = "btn btn-danger";
+      btn.id = dishes.id;
       btn.value = "-";
+      btn.onClick = this.RemoveDish(dishes.id);
       cell4.appendChild(btn);
       table.appendChild(body);
       this.AddLocalStorage();
       this.amount = '1';
-      var totalprice = document.getElementById('totalprice');
-      totalprice.innerText += price2;
+      var total = parseFloat(document.getElementById("totalprice").innerText);
+      document.getElementById("totalprice").innerText = "";
+      total += parseFloat(price2);
+      total = total.toFixed(2);
+      document.getElementById("totalprice").innerText = total;
     },
     AddLocalStorage: function AddLocalStorage() {
       var string = JSON.stringify(this.totalorder);
       localStorage.setItem('Order', string);
     }
-  }
+  },
+  RemoveDish: function RemoveDish(id) {}
 });
 
 /***/ }),

@@ -32,39 +32,46 @@
         },
 
         methods: {
-            addOrder: function(){
+            addOrder(){
                 if(localStorage.getItem('Order') != null){
                     this.totalorder = JSON.parse(localStorage.getItem('Order'));
                 }
 
-                let test = JSON.parse(this.dish);
-                this.totalorder.push({"id":test.id, "name":test.name, "amount":this.amount, "price":(test.price * this.amount)});
+                let dishes = JSON.parse(this.dish);
+                this.totalorder.push({"id":dishes.id, "name":dishes.name, "amount":this.amount, "price":(dishes.price * this.amount)});
 
                 let table = document.getElementById("EventsTable");
                 let body = document.getElementById("body");
                     let row = body.insertRow();
                     let cell = row.insertCell(0);
-                    let name2 = test.name;
+                    let name2 = dishes.name;
                     cell.innerText = name2;
                     let cell2 = row.insertCell(1);
                     let amount2 = this.amount;
                     cell2.innerText = amount2;
                     let cell3 = row.insertCell(2);
-                    let price2 = (test.price * this.amount);
+                    let price2 = (dishes.price * this.amount);
+                    price2 = price2.toFixed(2);
                     cell3.innerText = "€" + price2;
                     let cell4 = row.insertCell(3);
                         let btn = document.createElement('input');
                         btn.type = "button";
                         btn.className = "btn btn-danger";
+                        btn.id = dishes.id;
                         btn.value = "-";
+                        btn.onClick = this.RemoveDish(dishes.id);
                     cell4.appendChild(btn);
                 table.appendChild(body);
 
                 this.AddLocalStorage();
                 this.amount = '1';
 
-                let totalprice = document.getElementById('totalprice');
-                totalprice.innerText += price2;
+                let total = parseFloat(document.getElementById("totalprice").innerText);
+                    document.getElementById("totalprice").innerText = "";
+
+                total += parseFloat(price2);
+                total = total.toFixed(2);
+                document.getElementById("totalprice").innerText = total;
             },
 
             AddLocalStorage: function () {
@@ -72,6 +79,9 @@
                 localStorage.setItem('Order', string);
             }
         },
+        RemoveDish(id){
+        
+        }
     }
 
 </script>
