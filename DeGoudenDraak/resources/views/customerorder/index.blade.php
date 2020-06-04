@@ -1,5 +1,43 @@
 @extends('layouts.customer')
 
+<script>
+    function startTimer(duration, display) {
+        let timer = duration, minutes, seconds;
+        setInterval(function () {
+            minutes = parseInt(timer / 60, 10);
+            seconds = parseInt(timer % 60, 10);
+
+            minutes = minutes < 10 ? "0" + minutes : minutes;
+            seconds = seconds < 10 ? "0" + seconds : seconds;
+            //TODO: check if element is visible only then activate this
+            display.textContent = minutes + ":" + seconds;
+
+            if (--timer < 0) {
+                timer = 0;
+                location.reload(true);
+            }
+        }, 1000);
+    }
+
+    window.onload = function () {
+        let minutes = 60 * (10 - document.getElementById('minutes').innerText),
+            display = document.getElementById('time')
+        if(display != null)
+        {
+            startTimer(minutes, display);
+        }
+    };
+
+    function hideHistory(){
+        let div = document.getElementById('history');
+        if (div.style.display === "none") {
+            div.style.display = "block";
+        } else {
+            div.style.display = "none";
+        }
+    }
+</script>
+
 @section('content')
     <div>
     <div class="container">
@@ -18,8 +56,31 @@
     </div>
     <hr>
     <div class="container">
-        <div class="row pt-3">
+        <div class="row pt-3 d-flex justify-content-between">
             <h1>Geschiedenis</h1>
+            <button class="mt-1" style="width:100px; height: 30px" onclick="hideHistory()">Hide/Show</button>
+        </div>
+        <div id="history" class="row">
+            <table id="HistoryTable" class="table table-bordered table-striped">
+                <thead>
+                <tr>
+                    <th>Gerecht</th>
+                    <th>Beschrijving</th>
+                    <th>Prijs</th>
+                    <th>Bestellen</th>
+                </tr>
+                </thead>
+                <tbody id="body2">
+                    @foreach($history as $dish)
+                        <tr>
+                            <td>{{ $dish->name }}</td>
+                            <td>{{ $dish->description }}</td>
+                            <td>€{{ $dish->price }}</td>
+                            <td width="100px"><button type="button" class="btn font-weight-bold btn-primary" data-toggle="modal" data-target="#add{{$dish->id}}">Toevoegen</button></td>
+                        </tr>
+                    @endforeach
+                </tbody>
+            </table>
         </div>
     </div>
     <hr>
@@ -93,8 +154,8 @@
                     </h4>
                 </div>
                 <div>
+                    <span class="d-none" id="minutes">{{$waittime}}</span>
                     @if($iswaiting)
-                        <span class="d-none" id="minutes">{{$waittime}}</span>
                         <strong><span>Wacht <span id="time"></span> minuten tot uw volgende bestelling!</span></strong>
                     @else
                         <pay-order iscustomer customer-id="{{$customer->id}}"></pay-order>
@@ -103,33 +164,4 @@
             </div>
         </div>
     </div>
-
-    <script>
-        function startTimer(duration, display) {
-            let timer = duration, minutes, seconds;
-            setInterval(function () {
-                minutes = parseInt(timer / 60, 10);
-                seconds = parseInt(timer % 60, 10);
-
-                minutes = minutes < 10 ? "0" + minutes : minutes;
-                seconds = seconds < 10 ? "0" + seconds : seconds;
-                //TODO: check if element is visible only then activate this
-                display.textContent = minutes + ":" + seconds;
-
-                if (--timer < 0) {
-                    timer = 0;
-                    location.reload(true);
-                }
-            }, 1000);
-        }
-
-        window.onload = function () {
-            let minutes = 60 * (10 - document.getElementById('minutes').innerText),
-                display = document.getElementById('time')
-            if(display != null)
-            {
-                startTimer(minutes, display);
-            }
-        };
-    </script>
 @endsection

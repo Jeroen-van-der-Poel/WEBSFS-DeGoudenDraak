@@ -17,6 +17,7 @@ class CustomerOrderController extends Controller
         $customer = Customer::findorfail($id);
         $categories = Category::all();
         $dishes = Dish::all();
+        $history = $customer->dishes()->get()->unique();
         $waittime = 0;
         $iswaiting = false;
 
@@ -31,8 +32,7 @@ class CustomerOrderController extends Controller
                 $iswaiting = true;
             }
         }
-
-        return view('customerorder/index', compact('customer', 'categories', 'dishes', 'waittime', 'iswaiting'));
+        return view('customerorder/index', compact('customer', 'categories', 'dishes', 'waittime', 'iswaiting', 'history'));
     }
 
     public function store($id, Request $request)
