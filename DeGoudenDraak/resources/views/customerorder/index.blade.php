@@ -73,7 +73,7 @@
             </div>
             <div class="col-sm-4 justify-content-center">
                 <h4 class="d-flex justify-content-center">Bestelling</h4>
-                <table id="EventsTable" class="table table-bordered table-striped">
+                <table id="dishesTable" class="table table-bordered table-striped">
                     <thead>
                     <tr>
                         <th>Naam</th>
@@ -88,12 +88,48 @@
                 </table>
                 <hr>
                 <div class="col-sm-4 justify-content-center align-self-end">
-                    <h4 class="d-flex">Totaal: €<span id="totalprice">0</span> </h4>
+                    <h4 class="">Totaal: €
+                        <span id="totalprice">0.00</span>
+                    </h4>
                 </div>
                 <div>
-                    <pay-order iscustomer customer-id="{{$customer->id}}"></pay-order>
+                    @if($iswaiting)
+                        <span class="d-none" id="minutes">{{$waittime}}</span>
+                        <strong><span>Wacht <span id="time"></span> minuten tot uw volgende bestelling!</span></strong>
+                    @else
+                        <pay-order iscustomer customer-id="{{$customer->id}}"></pay-order>
+                    @endif
                 </div>
             </div>
         </div>
     </div>
+
+    <script>
+        function startTimer(duration, display) {
+            let timer = duration, minutes, seconds;
+            setInterval(function () {
+                minutes = parseInt(timer / 60, 10);
+                seconds = parseInt(timer % 60, 10);
+
+                minutes = minutes < 10 ? "0" + minutes : minutes;
+                seconds = seconds < 10 ? "0" + seconds : seconds;
+                //TODO: check if element is visible only then activate this
+                display.textContent = minutes + ":" + seconds;
+
+                if (--timer < 0) {
+                    timer = 0;
+                    location.reload(true);
+                }
+            }, 1000);
+        }
+
+        window.onload = function () {
+            let minutes = 60 * (10 - document.getElementById('minutes').innerText),
+                display = document.getElementById('time')
+            if(display != null)
+            {
+                startTimer(minutes, display);
+            }
+        };
+    </script>
 @endsection

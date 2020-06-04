@@ -1947,7 +1947,7 @@ __webpack_require__.r(__webpack_exports__);
         "amount": this.amount,
         "price": dishes.price * this.amount
       });
-      var table = document.getElementById("EventsTable");
+      var table = document.getElementById("dishesTable");
       var body = document.getElementById("body");
       var row = body.insertRow();
       var cell = row.insertCell(0);
@@ -1968,15 +1968,22 @@ __webpack_require__.r(__webpack_exports__);
       btn.value = "-";
 
       btn.onclick = function () {
-        alert(dishes.id);
         var orders = JSON.parse(localStorage.getItem('Order'));
+        orders.forEach(function (item, index) {
+          if (item.id == btn.id) {
+            orders.splice(index, 1);
+            row.parentNode.removeChild(row);
 
-        for (var i = 0; i < orders; i++) {
-          if (orders[i].id === id) {
-            orders.slice(orders[i], 1);
-            localStorage.setIem('Order', JSON.stringify(orders));
+            var _total = parseFloat(document.getElementById("totalprice").innerText);
+
+            document.getElementById("totalprice").innerText = "";
+            _total -= parseFloat(item.price);
+            _total = _total.toFixed(2);
+            document.getElementById("totalprice").innerText = _total;
           }
-        }
+        });
+        localStorage.clear();
+        localStorage.setItem("Order", JSON.stringify(orders));
       };
 
       cell4.appendChild(btn);
@@ -2019,7 +2026,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony default export */ __webpack_exports__["default"] = ({
   props: {
     iscustomer: Boolean,
-    customerId: String
+    customerId: String,
+    userId: String
   },
   mounted: function mounted() {},
   data: function data() {
@@ -2046,6 +2054,8 @@ __webpack_require__.r(__webpack_exports__);
         while (body.hasChildNodes()) {
           body.removeChild(body.firstChild);
         }
+
+        document.getElementById("totalprice").innerText = "0.00";
       }
     },
     CustomerOrder: function CustomerOrder() {
@@ -2057,7 +2067,15 @@ __webpack_require__.r(__webpack_exports__);
       });
       localStorage.clear();
     },
-    UserOrder: function UserOrder() {}
+    UserOrder: function UserOrder() {
+      var order = localStorage.getItem('Order');
+      axios.post('/cashregister/index', {
+        order1: order
+      }).then(function (response) {
+        window.location.reload();
+      });
+      localStorage.clear();
+    }
   }
 });
 

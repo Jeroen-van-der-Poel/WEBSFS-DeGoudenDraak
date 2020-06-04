@@ -12,6 +12,7 @@
         props: {
                 iscustomer: Boolean,
                 customerId: String,
+                userId: String,
                 },
 
         mounted() {
@@ -43,6 +44,7 @@
                     while(body.hasChildNodes()){
                         body.removeChild(body.firstChild);
                     }
+                    document.getElementById("totalprice").innerText = "0.00";
                 }
             },
             CustomerOrder() {
@@ -54,7 +56,12 @@
                 localStorage.clear();
             },
             UserOrder() {
-
+                let order = localStorage.getItem('Order');
+                axios.post('/cashregister/index', {order1: order})
+                    .then(function (response) {
+                        window.location.reload();
+                    });
+                localStorage.clear();
             }
         }
     }

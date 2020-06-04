@@ -40,7 +40,7 @@
                 let dishes = JSON.parse(this.dish);
                 this.totalorder.push({"id":dishes.id, "name":dishes.name, "amount":this.amount, "price":(dishes.price * this.amount)});
 
-                let table = document.getElementById("EventsTable");
+                let table = document.getElementById("dishesTable");
                 let body = document.getElementById("body");
                     let row = body.insertRow();
                     let cell = row.insertCell(0);
@@ -60,15 +60,21 @@
                         btn.id = dishes.id;
                         btn.value = "-";
                         btn.onclick = function(){
-                            alert(dishes.id);
                             let orders = JSON.parse(localStorage.getItem('Order'));
-                            for(let i = 0; i < orders; i++){
-                                if(orders[i].id === id){
-                                    orders.slice(orders[i], 1);
+                            orders.forEach(function (item, index) {
+                                if(item.id == btn.id){
+                                    orders.splice(index, 1);
+                                    row.parentNode.removeChild(row);
 
-                                    localStorage.setIem('Order', JSON.stringify(orders));
+                                    let total = parseFloat(document.getElementById("totalprice").innerText);
+                                    document.getElementById("totalprice").innerText = "";
+                                    total -= parseFloat(item.price);
+                                    total = total.toFixed(2);
+                                    document.getElementById("totalprice").innerText = total;
                                 }
-                            }
+                            });
+                            localStorage.clear();
+                            localStorage.setItem("Order", JSON.stringify(orders));
                         }
                     cell4.appendChild(btn);
                 table.appendChild(body);

@@ -59,12 +59,8 @@
                                             <span class="fas fa-window-close text-danger">X</span>
                                         </button>
                                     </div>
-                                    <div class="modal-body">
-                                        {{$dish->name}}
-                                        <input class="float-right" type="number" id="points" name="points" min="1" max="100" value="1">
-                                    </div>
-                                    <div class="modal-footer">
-                                        <input class="btn btn-sm btn-success" type="submit">
+                                    <div>
+                                        <add-order dish="{{$dish}}"></add-order>
                                     </div>
                                 </div>
                             </div>
@@ -87,33 +83,27 @@
         </div>
         <div class="col-sm-4 justify-content-center">
             <h4 class="d-flex justify-content-center">Bestelling</h4>
-            <table id="EventsTable" class="table table-bordered table-striped">
-            <thead>
+            <table id="dishesTable" class="table table-bordered table-striped">
+                <thead>
                 <tr>
-                    <th>Nummer</th>
                     <th>Naam</th>
                     <th>Aantal</th>
                     <th>Prijs</th>
                     <th>Operatie</th>
                 </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <td>test</td>
-                    <td>test</td>
-                    <td>test</td>
-                    <td>test</td>
-                    <td>
-                        <a href="/" class="btn btn-danger" style="max-height: 35px; min-height: 35px">Verwijderen</a>
-                    </td>
-                </tr>
-            </tbody>
+                </thead>
+                <tbody id="body">
+
+                </tbody>
             </table>
             <hr>
-            <div class="col-sm-3 justify-content-center align-self-end">
-                <h4 class="d-flex">Totaal: <p class="pl-2">$0,00</p></h4>
-                <a href="/" class="btn btn-success" style="max-height: 35px; min-height: 35px">Afrekenen</a>
-                <a href="/" class="btn btn-danger" style="max-height: 35px; min-height: 35px">Verwijderen</a>
+                <div class="col-sm-4 justify-content-center align-self-end">
+                    <h4 class="">Totaal: €
+                        <span id="totalprice">0.00</span>
+                    </h4>
+                </div>
+            <div>
+                <pay-order user-id="{{auth()->user()->id}}"></pay-order>
             </div>
         </div>
     </div>

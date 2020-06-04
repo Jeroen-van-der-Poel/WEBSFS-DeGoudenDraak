@@ -38,6 +38,7 @@ Route::post('/customer-order/{id}', 'CustomerOrderController@help');
 
 //employee
 Route::get('/cashregister/index', 'CashRegisterController@index');
+Route::post('/cashregister/index', 'CashRegisterController@store');
 Route::get('/cashregister/dishes', 'DishesController@index');
 Route::patch('/FilterCashRegisterDishes','CashRegisterController@filterDishes');
 Route::patch('/FilterCashRegisterCategories','CashRegisterController@filterCategories');
