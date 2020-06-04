@@ -17,8 +17,22 @@ class CustomerOrderController extends Controller
         $customer = Customer::findorfail($id);
         $categories = Category::all();
         $dishes = Dish::all();
+        $waittime = 0;
+        $iswaiting = false;
 
-        return view('customerorder/index', compact('customer', 'categories', 'dishes'));
+        if($customer->dishes()->first() != null &&
+            $customer->dishes()->first()->customers()->first()->id == $customer->id &&
+            $customer->dishes()->first()->customers()->first()->tablenumber != null)
+        {
+            $last = $customer->dishes()->orderByDesc('sale_date')->first()->pivot->sale_date;
+            $between = Carbon::now()->diffInMinutes($last);
+            $waittime = $between;
+            if ($between < 10){
+                $iswaiting = true;
+            }
+        }
+
+        return view('customerorder/index', compact('customer', 'categories', 'dishes', 'waittime', 'iswaiting'));
     }
 
     public function store($id, Request $request)

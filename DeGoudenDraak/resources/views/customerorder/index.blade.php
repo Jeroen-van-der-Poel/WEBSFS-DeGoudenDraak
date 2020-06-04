@@ -93,9 +93,43 @@
                     </h4>
                 </div>
                 <div>
-                    <pay-order iscustomer customer-id="{{$customer->id}}"></pay-order>
+                    @if($iswaiting)
+                        <span class="d-none" id="minutes">{{$waittime}}</span>
+                        <strong><span>Wacht <span id="time"></span> minuten voor uw volgende bestelling</span></strong>
+                    @else
+                        <pay-order iscustomer customer-id="{{$customer->id}}"></pay-order>
+                    @endif
                 </div>
             </div>
         </div>
     </div>
+
+    <script>
+        function startTimer(duration, display) {
+            let timer = duration, minutes, seconds;
+            setInterval(function () {
+                minutes = parseInt(timer / 60, 10);
+                seconds = parseInt(timer % 60, 10);
+
+                minutes = minutes < 10 ? "0" + minutes : minutes;
+                seconds = seconds < 10 ? "0" + seconds : seconds;
+                //TODO: check if element is visible only then activate this
+                display.textContent = minutes + ":" + seconds;
+
+                if (--timer < 0) {
+                    timer = 0;
+                    location.reload(true);
+                }
+            }, 1000);
+        }
+
+        window.onload = function () {
+            let minutes = 60 * (10 - document.getElementById('minutes').innerText),
+                display = document.getElementById('time')
+            if(display != null)
+            {
+                startTimer(minutes, display);
+            }
+        };
+    </script>
 @endsection
