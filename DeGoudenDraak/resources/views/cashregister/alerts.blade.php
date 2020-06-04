@@ -1,12 +1,12 @@
 @extends('layouts.cashregister')
 
 @section('content')
-    <div class="container ">
-        @if(Session::has('success'))
-            <div class="alert alert-success">
-                {{Session::get('success')}}
-            </div>
-        @endif
+    @if(Session::has('success'))
+        <div class="alert alert-success">
+            {{Session::get('success')}}
+        </div>
+    @endif
+    <div class="container">
         <div class="justify-content-center m-5">
             <table id="EventsTable" class="table table-bordered table-striped">
                 <thead>
