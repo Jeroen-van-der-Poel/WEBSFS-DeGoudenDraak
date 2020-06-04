@@ -58,9 +58,9 @@
     <div class="container">
         <div class="row pt-3 d-flex justify-content-between">
             <h1>Geschiedenis</h1>
-            <button class="mt-1" style="width:100px; height: 30px" onclick="hideHistory()">Hide/Show</button>
+            <button class="mt-1" style="width:100px; height: 30px" onclick="hideHistory()">Show/Hide</button>
         </div>
-        <div id="history" class="row">
+        <div id="history" class="row" style="display: none">
             <table id="HistoryTable" class="table table-bordered table-striped">
                 <thead>
                 <tr>
