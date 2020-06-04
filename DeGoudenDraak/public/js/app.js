@@ -1969,18 +1969,17 @@ __webpack_require__.r(__webpack_exports__);
 
       btn.onclick = function () {
         var orders = JSON.parse(localStorage.getItem('Order'));
-        /*for(let i = 0; i < orders.length; i++){
-            if(orders[i].id == btn.id){
-                alert(orders[i].id);
-                orders.splice(orders[i], 1);
-                row.parentNode.removeChild(row);
-            }
-        }*/
-
         orders.forEach(function (item, index) {
           if (item.id == btn.id) {
             orders.splice(index, 1);
             row.parentNode.removeChild(row);
+
+            var _total = parseFloat(document.getElementById("totalprice").innerText);
+
+            document.getElementById("totalprice").innerText = "";
+            _total -= parseFloat(item.price);
+            _total = _total.toFixed(2);
+            document.getElementById("totalprice").innerText = _total;
           }
         });
         localStorage.clear();
@@ -2055,7 +2054,7 @@ __webpack_require__.r(__webpack_exports__);
           body.removeChild(body.firstChild);
         }
 
-        document.getElementById("totalprice").innerText = "0";
+        document.getElementById("totalprice").innerText = "0.00";
       }
     },
     CustomerOrder: function CustomerOrder() {

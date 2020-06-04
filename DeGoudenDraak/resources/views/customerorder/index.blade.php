@@ -88,7 +88,9 @@
                 </table>
                 <hr>
                 <div class="col-sm-4 justify-content-center align-self-end">
-                    <h4 class="d-flex">Totaal: €<span id="totalprice">0</span> </h4>
+                    <h4 class="">Totaal: €
+                        <span id="totalprice">0.00</span>
+                    </h4>
                 </div>
                 <div>
                     <pay-order iscustomer customer-id="{{$customer->id}}"></pay-order>
