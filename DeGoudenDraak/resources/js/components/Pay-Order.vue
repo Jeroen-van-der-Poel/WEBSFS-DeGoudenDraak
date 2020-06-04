@@ -12,6 +12,7 @@
         props: {
                 iscustomer: Boolean,
                 customerId: String,
+                userId: String,
                 },
 
         mounted() {
@@ -55,7 +56,12 @@
                 localStorage.clear();
             },
             UserOrder() {
-
+                let order = localStorage.getItem('Order');
+                axios.post('/cashregister/index', {order1: order})
+                    .then(function (response) {
+                        window.location.reload();
+                    });
+                localStorage.clear();
             }
         }
     }

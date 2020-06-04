@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Category;
 use App\Dish;
 use App\Http\Controllers\Controller;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 
 class CashRegisterController extends Controller
@@ -19,6 +20,26 @@ class CashRegisterController extends Controller
         $dishes = Dish::all();
 
         return view('/cashregister/index', compact('categories', 'dishes'));
+    }
+
+    public function store(Request $request)
+    {
+        $user = auth()->user();
+        $now = Carbon::now();
+
+        $order = collect(json_decode($request->get('order1'), true));
+
+        if($order != null){
+            foreach($order->unique('id') as $dish)
+            {
+                $dishes = Dish::find($dish['id']);
+                $amount = $dish['amount'];
+
+                $dishes->users()->save($user, ['amount'=>$amount, 'sale_date'=>$now]);
+            }
+        }
+
+        return redirect('cashregister/index');
     }
 
     public function filterDishes(){

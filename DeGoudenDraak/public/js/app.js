@@ -1947,7 +1947,7 @@ __webpack_require__.r(__webpack_exports__);
         "amount": this.amount,
         "price": dishes.price * this.amount
       });
-      var table = document.getElementById("EventsTable");
+      var table = document.getElementById("dishesTable");
       var body = document.getElementById("body");
       var row = body.insertRow();
       var cell = row.insertCell(0);
@@ -2026,7 +2026,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony default export */ __webpack_exports__["default"] = ({
   props: {
     iscustomer: Boolean,
-    customerId: String
+    customerId: String,
+    userId: String
   },
   mounted: function mounted() {},
   data: function data() {
@@ -2066,7 +2067,15 @@ __webpack_require__.r(__webpack_exports__);
       });
       localStorage.clear();
     },
-    UserOrder: function UserOrder() {}
+    UserOrder: function UserOrder() {
+      var order = localStorage.getItem('Order');
+      axios.post('/cashregister/index', {
+        order1: order
+      }).then(function (response) {
+        window.location.reload();
+      });
+      localStorage.clear();
+    }
   }
 });
 

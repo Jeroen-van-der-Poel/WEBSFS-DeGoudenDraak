@@ -40,7 +40,7 @@
                 let dishes = JSON.parse(this.dish);
                 this.totalorder.push({"id":dishes.id, "name":dishes.name, "amount":this.amount, "price":(dishes.price * this.amount)});
 
-                let table = document.getElementById("EventsTable");
+                let table = document.getElementById("dishesTable");
                 let body = document.getElementById("body");
                     let row = body.insertRow();
                     let cell = row.insertCell(0);

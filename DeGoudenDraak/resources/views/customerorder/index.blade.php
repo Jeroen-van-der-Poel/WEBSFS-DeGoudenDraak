@@ -73,7 +73,7 @@
             </div>
             <div class="col-sm-4 justify-content-center">
                 <h4 class="d-flex justify-content-center">Bestelling</h4>
-                <table id="EventsTable" class="table table-bordered table-striped">
+                <table id="dishesTable" class="table table-bordered table-striped">
                     <thead>
                     <tr>
                         <th>Naam</th>
