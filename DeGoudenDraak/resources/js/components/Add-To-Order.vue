@@ -61,12 +61,21 @@
                         btn.value = "-";
                         btn.onclick = function(){
                             let orders = JSON.parse(localStorage.getItem('Order'));
-                            for(let i = 0; i < orders.length; i++){
-                                if(orders[i].id === dishes.id){
-                                    alert(orders[i].id)
-                                    localStorage.removeItem(orders[i]);
+                            /*for(let i = 0; i < orders.length; i++){
+                                if(orders[i].id == btn.id){
+                                    alert(orders[i].id);
+                                    orders.splice(orders[i], 1);
+                                    row.parentNode.removeChild(row);
                                 }
-                            }
+                            }*/
+                            orders.forEach(function (item, index) {
+                                if(item.id == btn.id){
+                                    orders.splice(index, 1);
+                                    row.parentNode.removeChild(row);
+                                }
+                            });
+                            localStorage.clear();
+                            localStorage.setItem("Order", JSON.stringify(orders));
                         }
                     cell4.appendChild(btn);
                 table.appendChild(body);

@@ -1969,13 +1969,22 @@ __webpack_require__.r(__webpack_exports__);
 
       btn.onclick = function () {
         var orders = JSON.parse(localStorage.getItem('Order'));
+        /*for(let i = 0; i < orders.length; i++){
+            if(orders[i].id == btn.id){
+                alert(orders[i].id);
+                orders.splice(orders[i], 1);
+                row.parentNode.removeChild(row);
+            }
+        }*/
 
-        for (var i = 0; i < orders.length; i++) {
-          if (orders[i].id === dishes.id) {
-            alert(orders[i].id);
-            localStorage.removeItem(orders[i]);
+        orders.forEach(function (item, index) {
+          if (item.id == btn.id) {
+            orders.splice(index, 1);
+            row.parentNode.removeChild(row);
           }
-        }
+        });
+        localStorage.clear();
+        localStorage.setItem("Order", JSON.stringify(orders));
       };
 
       cell4.appendChild(btn);
@@ -2045,6 +2054,8 @@ __webpack_require__.r(__webpack_exports__);
         while (body.hasChildNodes()) {
           body.removeChild(body.firstChild);
         }
+
+        document.getElementById("totalprice").innerText = "0";
       }
     },
     CustomerOrder: function CustomerOrder() {

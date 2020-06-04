@@ -43,6 +43,7 @@
                     while(body.hasChildNodes()){
                         body.removeChild(body.firstChild);
                     }
+                    document.getElementById("totalprice").innerText = "0";
                 }
             },
             CustomerOrder() {
