@@ -48,6 +48,12 @@ Route::group(['middleware' => 'admin'], function() {
     Route::get('/cashregister/users', 'UsersController@index');
     Route::post('/cashregister/users', 'UsersController@store');
     Route::delete('/cashregister/users/{user}', 'UsersController@destroy');
+    Route::get('/cashregister/users/remove-admin/{user}', 'UsersController@removeAdmin');
+    Route::get('/cashregister/users/give-admin/{user}', 'UsersController@giveAdmin');
+    Route::get('/cashregister/users/remove-cashier/{user}', 'UsersController@removeCashier');
+    Route::get('/cashregister/users/give-cashier/{user}', 'UsersController@giveCashier');
+    Route::get('/cashregister/users/remove-waitress/{user}', 'UsersController@removeWaitress');
+    Route::get('/cashregister/users/give-waitress/{user}', 'UsersController@giveWaitress');
 });
 
 // Routes only able to be used by Waitress

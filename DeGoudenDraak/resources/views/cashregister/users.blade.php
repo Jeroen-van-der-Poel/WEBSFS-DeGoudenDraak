@@ -1,14 +1,14 @@
 @extends('layouts.cashregister')
 
 @section('content')
+    @if(Session::has('fail'))
+        <div class="alert alert-danger">
+            {{Session::get('fail')}}
+        </div>
+    @endif
     <div class="container">
         <div class="row">
             <div class="col-lg-12 col-lg-offset-1 m-5">
-                @if(Session::has('fail'))
-                    <div class="alert alert-danger">
-                        {{Session::get('fail')}}
-                    </div>
-                @endif
                 <div class="table-responsive">
                     <div class="card-header">
                         <div class="d-flex justify-content-between">
@@ -81,14 +81,19 @@
 
                                     <td>
                                         @if($user->hasRole("Admin"))
-                                            <a title="Haal de rol administrator weg bij de gebruiker" class="btn btn-primary" href="/admin-area/users/remove-admin/{{$user->id}}">Admin Weghalen</a>
+                                            <a class="btn btn-primary" href="/cashregister/users/remove-admin/{{$user->id}}">Admin Weghalen</a>
                                         @else
-                                            <a title="Maak de gebruiker administrator" class="btn btn-primary" href="/admin-area/users/give-admin/{{$user->id}}">Maak Admin</a>
+                                            <a class="btn btn-primary" href="/cashregister/users/give-admin/{{$user->id}}">Maak Admin</a>
                                         @endif
-                                        @if($user->hasRole("Contentmanager"))
-                                            <a title="Haal de rol Content manager weg bij de gebruiker" class="btn btn-primary" href="/admin-area/users/remove-contentmanager/{{$user->id}}">Content Manager Weghalen</a>
+                                        @if($user->hasRole("Cashier"))
+                                            <a class="btn btn-primary" href="/cashregister/users/remove-cashier/{{$user->id}}">Kassamedewerker Weghalen</a>
                                         @else
-                                            <a title="Maak de gebruiker een Content manager" class="btn btn-primary" href="/admin-area/users/give-contentmanager/{{$user->id}}">Maak Content Manager</a>
+                                            <a class="btn btn-primary" href="/cashregister/users/give-cashier/{{$user->id}}">Maak Kassamedewerker</a>
+                                        @endif
+                                        @if($user->hasRole("Waitress"))
+                                            <a class="btn btn-primary" href="/cashregister/users/remove-waitress/{{$user->id}}">Serveerster Weghalen</a>
+                                        @else
+                                            <a class="btn btn-primary" href="/cashregister/users/give-waitress/{{$user->id}}">Maak Serveerster</a>
                                         @endif
                                         <form class="float-right d-flex pr-2" method="POST" action="/cashregister/users/{{$user->id}}">
                                             {{ csrf_field() }}
