@@ -57,9 +57,6 @@
                 <!-- Right Side Of Navbar -->
                 <ul class="navbar-nav ml-auto">
                     <li class="nav-item">
-                        <a class="nav-link" href="/home" style="color: black">Home</a>
-                    </li>
-                    <li class="nav-item">
                         <a class="nav-link" href="/cashregister/index" style="color: black">Kassa</a>
                     </li>
                     <li class="nav-item">

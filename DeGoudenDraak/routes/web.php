@@ -59,4 +59,5 @@ Route::group(['middleware' => 'waitress'], function() {
 // Routes only able to be used by Cashier
 Route::group(['middleware' => 'cashier'], function() {
     Route::get('/cashregister/sales', 'SalesController@index');
+    Route::patch('/FilterSales', 'SalesController@filterSales');
 });
