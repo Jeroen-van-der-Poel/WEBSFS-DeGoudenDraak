@@ -95,7 +95,7 @@
                 <div>
                     @if($iswaiting)
                         <span class="d-none" id="minutes">{{$waittime}}</span>
-                        <strong><span>Wacht <span id="time"></span> minuten voor uw volgende bestelling</span></strong>
+                        <strong><span>Wacht <span id="time"></span> minuten tot uw volgende bestelling!</span></strong>
                     @else
                         <pay-order iscustomer customer-id="{{$customer->id}}"></pay-order>
                     @endif
