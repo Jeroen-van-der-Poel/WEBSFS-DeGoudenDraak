@@ -1922,12 +1922,18 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   props: ['dish'],
   mounted: function mounted() {},
   data: function data() {
     return {
       amount: '1',
+      comment: '',
       totalorder: []
     };
   },
@@ -1945,7 +1951,8 @@ __webpack_require__.r(__webpack_exports__);
         "id": dishes.id,
         "name": dishes.name,
         "amount": this.amount,
-        "price": dishes.price * this.amount
+        "price": dishes.price * this.amount,
+        "comment": this.comment
       });
       var table = document.getElementById("dishesTable");
       var body = document.getElementById("body");
@@ -37653,6 +37660,33 @@ var render = function() {
                 return
               }
               _vm.amount = $event.target.value
+            }
+          }
+        })
+      ]),
+      _vm._v(" "),
+      _c("br"),
+      _vm._v(" "),
+      _c("div", { staticClass: "d-flex justify-content-between" }, [
+        _c("h4", [_vm._v("Extra opmerking")]),
+        _vm._v(" "),
+        _c("input", {
+          directives: [
+            {
+              name: "model",
+              rawName: "v-model",
+              value: _vm.comment,
+              expression: "comment"
+            }
+          ],
+          attrs: { type: "text", id: "comment", name: "comment" },
+          domProps: { value: _vm.comment },
+          on: {
+            input: function($event) {
+              if ($event.target.composing) {
+                return
+              }
+              _vm.comment = $event.target.value
             }
           }
         })

@@ -5,6 +5,11 @@
             <h4>Aantal</h4>
             <input type="number" id="points" name="points" min="1" max="100" value="1" v-model="amount">
             </div>
+            <br>
+            <div class="d-flex justify-content-between">
+                <h4>Extra opmerking</h4>
+                <input type="text" id="comment" name="comment" v-model="comment">
+            </div>
         </div>
         <div class="modal-footer">
             <input class="btn btn-sm btn-success" value="Toevoegen" data-dismiss="modal" type="submit" v-on:click="addOrder">
@@ -23,6 +28,7 @@
         data: function() {
             return{
                 amount: '1',
+                comment: '',
                 totalorder: [],
             };
         },
@@ -38,7 +44,7 @@
                 }
 
                 let dishes = JSON.parse(this.dish);
-                this.totalorder.push({"id":dishes.id, "name":dishes.name, "amount":this.amount, "price":(dishes.price * this.amount)});
+                this.totalorder.push({"id":dishes.id, "name":dishes.name, "amount":this.amount, "price":(dishes.price * this.amount), "comment":this.comment});
 
                 let table = document.getElementById("dishesTable");
                 let body = document.getElementById("body");

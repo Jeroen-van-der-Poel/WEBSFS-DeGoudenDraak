@@ -34,8 +34,9 @@ class CashRegisterController extends Controller
             {
                 $dishes = Dish::find($dish['id']);
                 $amount = $dish['amount'];
+                $comment = $dish['comment'];
 
-                $dishes->users()->save($user, ['amount'=>$amount, 'sale_date'=>$now]);
+                $dishes->users()->save($user, ['amount'=>$amount, 'sale_date'=>$now, 'comment'=>$comment]);
             }
         }
 

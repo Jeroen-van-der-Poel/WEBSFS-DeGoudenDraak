@@ -45,8 +45,9 @@ class CustomerOrderController extends Controller
            {
                $dishes = Dish::find($dish['id']);
                $amount = $dish['amount'];
+               $comment = $dish['comment'];
 
-               $dishes->customers()->save($customer, ['amount'=>$amount, 'sale_date'=>$now]);
+               $dishes->customers()->save($customer, ['amount'=>$amount, 'sale_date'=>$now, 'comment'=>$comment]);
            }
        }
 

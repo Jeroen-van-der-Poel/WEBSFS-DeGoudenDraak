@@ -18,6 +18,7 @@ class CreateDishUserTable extends Migration
             $table->unsignedBigInteger('user_id');
             $table->unsignedBigInteger('dish_id');
             $table->integer('amount');
+            $table->string('comment')->nullable();
             $table->dateTime('sale_date');
 
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
