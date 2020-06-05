@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Category;
 use App\Customer;
+use App\CustomerDish;
 use App\Dish;
 use App\CustomerHelp;
 use App\Http\Controllers\Controller;
@@ -38,6 +39,13 @@ class CustomerOrderController extends Controller
         $customer = Customer::findorfail($id);
         $now = Carbon::now();
 
+        if(CustomerDish::orderByDesc('sale_date')->first() != null && CustomerDish::orderByDesc('sale_date')->first()->order_number != null){
+            $ordernumber = CustomerDish::orderByDesc('sale_date')->first()->order_number  + 1;
+        }
+        else{
+            $ordernumber = 1;
+        }
+
         $order = collect(json_decode($request->get('order1'), true));
 
        if($order != null){
@@ -47,7 +55,7 @@ class CustomerOrderController extends Controller
                $amount = $dish['amount'];
                $comment = $dish['comment'];
 
-               $dishes->customers()->save($customer, ['amount'=>$amount, 'sale_date'=>$now, 'comment'=>$comment]);
+               $dishes->customers()->save($customer, ['amount'=>$amount, 'sale_date'=>$now, 'comment'=>$comment, 'order_number'=>$ordernumber]);
            }
        }
 

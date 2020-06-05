@@ -27,7 +27,7 @@ class HomeOrderController extends Controller
         $now = Carbon::now();
         $pickup = Carbon::now()->addHours(1);
 
-        if(CustomerDish::orderByDesc('sale_date')->first()->order_number != null){
+        if(CustomerDish::orderByDesc('sale_date')->first() != null && CustomerDish::orderByDesc('sale_date')->first()->order_number != null){
             $ordernumber = CustomerDish::orderByDesc('sale_date')->first()->order_number  + 1;
         }
         else{
@@ -46,7 +46,7 @@ class HomeOrderController extends Controller
                 $dishes->customers()->save($customer, ['amount'=>$amount, 'sale_date'=>$now, 'comment'=>$comment, 'order_number'=>$ordernumber, 'pickup_date'=>$pickup]);
             }
         }
-        
+
         return ['redirect' => route('confirmation', $id)];
     }
 
