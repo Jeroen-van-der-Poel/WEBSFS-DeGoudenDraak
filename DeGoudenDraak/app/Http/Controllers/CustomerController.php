@@ -40,4 +40,33 @@ class CustomerController extends Controller
 
         return redirect('/customer-order/'.$customer2->id);
     }
+
+    public function homeindex()
+    {
+        return view('customer/name');
+    }
+
+    public function homestore()
+    {
+        $data = request()->validate([
+            'name' => 'required',
+        ]);
+
+        $customer = DB::table('customers')->where([
+            ['name', '=', request('name')],
+        ])->first();
+
+        if ($customer != null) {
+            return redirect('/home-order/'.$customer->id);
+        }
+        else{
+            Customer::create($data);
+        }
+
+        $customer2 = DB::table('customers')->where([
+            ['name', '=', request('name')],
+        ])->first();
+
+        return redirect('/home-order/'.$customer2->id);
+    }
 }
