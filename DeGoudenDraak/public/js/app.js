@@ -2088,13 +2088,13 @@ __webpack_require__.r(__webpack_exports__);
     },
     CustomerHomeOrder: function CustomerHomeOrder() {
       var order = localStorage.getItem('Order');
+      localStorage.setItem("Customer", JSON.stringify(this.customerId));
       axios.post('/home-order/order/' + this.customerId, {
         order1: order
       }).then(function (response) {
-        //window.location.href = '/home-order/' + this.customerId + '/confirmation';
-        window.location = response.data.redirect;
+        window.location = "/home-order/" + JSON.parse(localStorage.getItem('Customer')) + "/confirmation";
+        localStorage.clear();
       });
-      localStorage.clear();
     }
   }
 });

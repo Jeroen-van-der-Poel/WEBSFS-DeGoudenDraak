@@ -47,13 +47,15 @@ class HomeOrderController extends Controller
             }
         }
 
-        return ['redirect' => route('confirmation', $id)];
+        return redirect('/home-order/'.$id);
     }
 
     public function confirmation($id)
     {
         $customer = Customer::findorfail($id);
+        $ordernumber = $customer->dishes()->orderByDesc('sale_date')->first()->pivot->order_number;
+        $dishes = $customer->dishes()->wherePivot('order_number', '=',  $ordernumber)->get();
 
-        return view('orderhome/confirmation', compact('customer'));
+        return view('orderhome/confirmation', compact('customer', 'ordernumber', 'dishes'));
     }
 }
