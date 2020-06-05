@@ -28,6 +28,11 @@
                         Klant
                     </button>
                 </a>
+                <a href="/homeorder">
+                    <button class="btn btn-primary ml-2" style="height: 100px; width: 200px; max-height: 100px; max-width: 200px;">
+                        Thuisbezorgen (tijdelijk)
+                    </button>
+                </a>
             </div>
         </div>
 @endsection

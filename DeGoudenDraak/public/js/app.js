@@ -2034,7 +2034,8 @@ __webpack_require__.r(__webpack_exports__);
   props: {
     iscustomer: Boolean,
     customerId: String,
-    userId: String
+    userId: String,
+    ishome: Boolean
   },
   mounted: function mounted() {},
   data: function data() {
@@ -2044,7 +2045,9 @@ __webpack_require__.r(__webpack_exports__);
   },
   methods: {
     PayOrder: function PayOrder() {
-      if (this.iscustomer) {
+      if (this.ishome) {
+        this.CustomerHomeOrder();
+      } else if (this.iscustomer) {
         this.CustomerOrder();
       } else {
         this.UserOrder();
@@ -2082,6 +2085,16 @@ __webpack_require__.r(__webpack_exports__);
         window.location.reload();
       });
       localStorage.clear();
+    },
+    CustomerHomeOrder: function CustomerHomeOrder() {
+      var order = localStorage.getItem('Order');
+      localStorage.setItem("Customer", JSON.stringify(this.customerId));
+      axios.post('/home-order/order/' + this.customerId, {
+        order1: order
+      }).then(function (response) {
+        window.location = "/home-order/" + JSON.parse(localStorage.getItem('Customer')) + "/confirmation";
+        localStorage.clear();
+      });
     }
   }
 });

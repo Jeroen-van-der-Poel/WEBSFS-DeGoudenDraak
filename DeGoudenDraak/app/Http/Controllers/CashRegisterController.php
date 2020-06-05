@@ -51,6 +51,7 @@ class CashRegisterController extends Controller
 
         $dishes = Dish::where('name',"LIKE", "%" . $data['filter'] . "%")->orWhere('menu_number',"LIKE", "%" . $data['filter']. "%")->orderBy('id', 'asc')->get();
         $dishCategories = array();
+        $categories= array();
         foreach($dishes as $dish){
             if(!in_array($dish->dish_category, $dishCategories)){
                 array_push($dishCategories, $dish->dish_category);

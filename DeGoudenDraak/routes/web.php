@@ -30,12 +30,18 @@ Route::get('/option', 'OrderController@index');
 //customer
 Route::get('/tablenumber', 'CustomerController@index');
 Route::post('/tablenumber', 'CustomerController@store');
+Route::get('/homeorder', 'CustomerController@homeindex');
+Route::post('/homeorder', 'CustomerController@homestore');
 
 //customer order
 Route::get('/customer-order/{id}', 'CustomerOrderController@index');
-
 Route::post('/customer-order/order/{id}', 'CustomerOrderController@store');
 Route::post('/customer-order/{id}', 'CustomerOrderController@help');
+
+//customer home order
+Route::get('/home-order/{id}', 'HomeOrderController@index');
+Route::post('/home-order/order/{id}', 'HomeOrderController@store');
+Route::get('/home-order/{id}/confirmation', 'HomeOrderController@confirmation')->name('confirmation');
 
 //employee
 Route::get('/cashregister/index', 'CashRegisterController@index');

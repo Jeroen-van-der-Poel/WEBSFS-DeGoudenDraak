@@ -19,6 +19,8 @@ class CreateCustomerDishTable extends Migration
             $table->unsignedBigInteger('dish_id');
             $table->integer('amount');
             $table->string('comment')->nullable();
+            $table->integer('order_number')->nullable();
+            $table->dateTime('pickup_date')->nullable();
             $table->dateTime('sale_date');
 
             $table->foreign('customer_id')->references('id')->on('customers')->onDelete('cascade');
