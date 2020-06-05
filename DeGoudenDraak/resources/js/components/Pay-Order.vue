@@ -13,6 +13,7 @@
                 iscustomer: Boolean,
                 customerId: String,
                 userId: String,
+                ishome: Boolean,
                 },
 
         mounted() {
@@ -27,7 +28,10 @@
 
         methods: {
             PayOrder() {
-                if(this.iscustomer){
+                if(this.ishome){
+                    this.CustomerHomeOrder();
+                }
+                else if(this.iscustomer){
                     this.CustomerOrder();
                 }
                 else{
@@ -60,6 +64,15 @@
                 axios.post('/cashregister/index', {order1: order})
                     .then(function (response) {
                         window.location.reload();
+                    });
+                localStorage.clear();
+            },
+            CustomerHomeOrder() {
+                let order = localStorage.getItem('Order');
+                axios.post('/home-order/order/' + this.customerId, {order1: order})
+                    .then(function (response) {
+                        //window.location.href = '/home-order/' + this.customerId + '/confirmation';
+                        window.location = response.data.redirect;
                     });
                 localStorage.clear();
             }

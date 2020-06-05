@@ -39,6 +39,8 @@ Route::post('/customer-order/{id}', 'CustomerOrderController@help');
 
 //customer home order
 Route::get('/home-order/{id}', 'HomeOrderController@index');
+Route::post('/home-order/order/{id}', 'HomeOrderController@store');
+Route::get('/home-order/{id}/confirmation', 'HomeOrderController@confirmation')->name('confirmation');
 
 //employee
 Route::get('/cashregister/index', 'CashRegisterController@index');

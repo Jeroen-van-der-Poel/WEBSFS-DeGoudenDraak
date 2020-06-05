@@ -4,7 +4,6 @@
     <div class="container">
         <form action="/homeorder" enctype="multipart/form-data" method="post">
             @csrf
-
             <div class="row d-flex justify-content-center m-5">
                 <h1>Vul de gegevens in</h1>
             </div>
@@ -23,6 +22,10 @@
 
             <div class="form-group row pt-4 pb-5 d-flex justify-content-center">
                 <button class="btn btn-primary">Doorgaan</button>
+            </div>
+
+            <div class="form-group row d-flex justify-content-center">
+                <p><strong>(Bestellingen kunnen 1 uur na bestelling opgehaald worden!)</strong></p>
             </div>
 
         </form>

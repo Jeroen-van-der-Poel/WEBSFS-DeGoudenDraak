@@ -67,7 +67,7 @@
                     </h4>
                 </div>
                 <div>
-                    <pay-order iscustomer customer-id="{{$customer->id}}"></pay-order>
+                    <pay-order ishome customer-id="{{$customer->id}}"></pay-order>
                 </div>
             </div>
         </div>
