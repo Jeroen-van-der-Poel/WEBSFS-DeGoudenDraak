@@ -36,7 +36,7 @@
                 <div class="category shadow" style="width: 100%; background: red; color: yellow; text-align: center">
                     <h2>{{$category->name}}</h2>
                 </div>
-                <div class="categoryItems" id="{{$category->name}}" style="display: flex; flex-wrap: wrap; justify-content: center">
+                <div class="categoryItems " id="{{$category->name}}" style="display: flex; flex-wrap: wrap; justify-content: center">
 
                 @foreach($dishes as $dish)
                     @if($dish->dish_category == $category->id)
@@ -109,17 +109,19 @@
         categories = document.getElementsByClassName("categoryItems");
         categoryHeaders = document.getElementsByClassName("category");
         categoryTexts = document.getElementsByTagName('h2');
+
         for(i = 0; i < categories.length; i++){
 
             if(categories[i].id === input){
-                categories[i].style.display = "";
+                categories[i].style.display = "flex";
             }
             else if(input === "NONE"){
-                categories[i].style.display = "";
+                categories[i].style.display = "flex";
             }
             else{
                 categories[i].style.display = "none";
             }
+
         }
 
         // Loop through all list items, and hide those who don't match the search query
@@ -149,7 +151,7 @@
         for (i = 0; i < cards.length; i++) {
             txtValue = cardHeaders[i].innerText;
             if (txtValue.toUpperCase().indexOf(filter) > -1) {
-                cards[i].style.display = "";
+                cards[i].style.display = "block";
             } else {
                 cards[i].style.display = "none";
             }
