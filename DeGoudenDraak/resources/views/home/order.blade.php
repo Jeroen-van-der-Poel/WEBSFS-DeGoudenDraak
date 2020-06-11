@@ -23,14 +23,9 @@
                 @endguest
             </div>
             <div class="col-sm-6 d-flex justify-content-center">
-                <a href="/tablenumber">
-                    <button class="btn btn-primary" style="height: 100px; width: 200px; max-height: 100px; max-width: 200px;">
-                        Klant
-                    </button>
-                </a>
                 <a href="/homeorder">
                     <button class="btn btn-primary ml-2" style="height: 100px; width: 200px; max-height: 100px; max-width: 200px;">
-                        Thuisbezorgen (tijdelijk)
+                        Klant
                     </button>
                 </a>
             </div>

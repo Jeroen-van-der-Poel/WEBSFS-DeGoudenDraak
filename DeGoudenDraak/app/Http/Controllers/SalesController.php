@@ -46,7 +46,7 @@ class SalesController extends Controller
         $revenue = 0;
 
         foreach($customerOrders as $customerOrder){
-            $revenue = $customerOrder->dish->price *$customerOrder->amount;
+            $revenue += $customerOrder->dish->price *$customerOrder->amount;
         }
 
         foreach($userOrders as $userOrder){
@@ -59,7 +59,7 @@ class SalesController extends Controller
         $revenue = 0;
 
         foreach($customerOrders as $customerOrder){
-            $revenue = $customerOrder->dish->price * $customerOrder->amount;
+            $revenue += $customerOrder->dish->price * $customerOrder->amount;
         }
 
         foreach($userOrders as $userOrder){
@@ -74,7 +74,7 @@ class SalesController extends Controller
         $revenue = 0;
 
         foreach($customerOrders as $customerOrder){
-            $revenue = $customerOrder->dish->price * $customerOrder->amount;
+            $revenue += $customerOrder->dish->price * $customerOrder->amount;
         }
 
         foreach($userOrders as $userOrder){

@@ -1,6 +1,9 @@
-@extends('layouts.customer')
+<head>
+    <!-- Styles -->
+    <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+</head>
 
-@section('content')
+<body>
     <div class="container">
         <div class="row d-flex justify-content-center pt-5">
             <h2>Bedankt voor uw bestelling</h2>
@@ -34,7 +37,7 @@
             <div class="col-sm-12 d-flex justify-content-center">
                 <h5>Print de QRcode uit en laat hem bij de kassa scannen, om je bestelling te ontvangen!</h5>
             </div>
-            <img id="qr" src="https://api.qrserver.com/v1/create-qr-code/?data= Bestelnummer: {{ $ordernumber }}, Naam: {{ $customer->name }} , Gerecht nummer(s): {{ $string }} }}&size=220x220&margin=0" alt="qrcode">
+            <img id="qr" src="https://api.qrserver.com/v1/create-qr-code/?data= Bestelnummer: {{ $ordernumber }}, Naam: {{ $customer->name }} , Gerecht nummer(s): {{ $string }} &size=220x220&margin=0" alt="qrcode">
             <div class="col-sm-12 d-flex justify-content-center pt-3">
                 <button class="btn btn-primary" onclick="window.print()">Print</button>
             </div>
@@ -46,7 +49,5 @@
             </a>
         </div>
     </div>
-
-
-@endsection
+</body>
 
