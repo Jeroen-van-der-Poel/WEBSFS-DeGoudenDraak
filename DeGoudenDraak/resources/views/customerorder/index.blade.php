@@ -119,7 +119,7 @@
 
 
                             <div class="card shadow m-2" style="width: 18rem;">
-                                <h4 class="card-header d-flex justify-content-center" style="max-width: 100%">{{$dish->menu_number}}{{$dish->menu_addition}} {!! $dish->name !!}</h4>
+                                <h4 class="card-header d-flex justify-content-center" style="max-width: 100%">{{$dish->menu_number}}{{$dish->menu_addition}}. {!! $dish->name !!}</h4>
                                 <div class="card-body d-flex flex-wrap justify-content-center">
                                     <p class="card-text" style="max-width: 100%"><strong>Beschrijving:</strong> {!! $dish->description !!} <br> <strong>Prijs:</strong> € {{$dish->price}}</p>
                                 </div>
