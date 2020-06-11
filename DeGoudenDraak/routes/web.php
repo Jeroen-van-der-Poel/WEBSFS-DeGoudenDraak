@@ -21,7 +21,7 @@ Route::get('/auth/unauthorized', 'UnauthorizedController@index');
 //home
 Route::get('/home', 'HomeController@index')->name('home');
 Route::get('/menu', 'MenuController@index');
-Route::get('/pdf', 'PdfController@generate');
+Route::get('/pdf', 'PdfController@download');
 Route::get('/news', 'NewsController@index');
 Route::get('/contact', 'ContactController@index');
 Route::get('/offers', 'OffersController@index');

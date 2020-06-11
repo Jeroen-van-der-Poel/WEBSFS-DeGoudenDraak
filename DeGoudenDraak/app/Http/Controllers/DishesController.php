@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Dish;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 
@@ -13,6 +14,8 @@ class DishesController extends Controller
 
     public function index()
     {
-        return view('/cashregister/dishes');
+        $dishes = Dish::all();
+
+        return view('/cashregister/dishes', compact('dishes'));
     }
 }

@@ -10,10 +10,10 @@
     <table class="blueTable">
         <thead>
         <tr>
-            <th>Menunummer</th>
-            <th>Naam</th>
-            <th>Beschrijving</th>
-            <th>Prijs</th>
+            <th style="text-align: center">Menunummer</th>
+            <th style="text-align: center">Naam</th>
+            <th style="text-align: center">Beschrijving</th>
+            <th style="text-align: center">Prijs</th>
         </tr>
         </thead>
 

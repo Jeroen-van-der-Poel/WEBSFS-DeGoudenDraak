@@ -8,7 +8,7 @@ use Illuminate\Http\Request;
 
 class PdfController extends Controller
 {
-    public function generate(){
+    public function download(){
         $dishes = Dish::all();
 
         $fileName = 'Dish_List.pdf';
@@ -32,4 +32,5 @@ class PdfController extends Controller
         $mpdf->WriteHTML($html);
         $mpdf->Output($fileName, 'D');
     }
+
 }

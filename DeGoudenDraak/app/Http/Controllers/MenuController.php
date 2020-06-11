@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Dish;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 
@@ -9,6 +10,8 @@ class MenuController extends Controller
 {
     public function index()
     {
-        return view('home/menu');
+        $dishes = Dish::all();
+
+        return view('home/menu', compact('dishes'));
     }
 }
