@@ -9,6 +9,7 @@ use App\Dish;
 use App\Http\Controllers\Controller;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
+use function GuzzleHttp\Psr7\copy_to_string;
 
 class HomeOrderController extends Controller
 {
@@ -56,6 +57,20 @@ class HomeOrderController extends Controller
         $ordernumber = $customer->dishes()->orderByDesc('sale_date')->first()->pivot->order_number;
         $dishes = $customer->dishes()->wherePivot('order_number', '=',  $ordernumber)->get();
 
-        return view('orderhome/confirmation', compact('customer', 'ordernumber', 'dishes'));
+        $dishesnumbers = Array();
+
+        foreach ($dishes as $dish){
+            if(!in_array($dish->menu_number, $dishesnumbers)){
+                array_push($dishesnumbers, $dish->menu_number);
+            }
+        }
+
+        $string = "";
+        foreach ($dishesnumbers as $number) {
+            $string2 = $number . ",";
+            $string .= $string2;
+        }
+
+        return view('orderhome/confirmation', compact('customer', 'ordernumber', 'dishes', 'string'));
     }
 }
