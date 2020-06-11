@@ -40,6 +40,7 @@
                     <th>Gerecht</th>
                     <th>Prijs</th>
                     <th>Aantal</th>
+                    <th>Commentaar</th>
                     <th>Subtotaal</th>
                 </tr>
                 </thead>
@@ -50,6 +51,11 @@
                         <td>{!!$userOrder->dish->name!!}</td>
                         <td>€ {{$userOrder->dish->price}}</td>
                         <td>{{$userOrder->amount}}</td>
+                        @if($userOrder->comment != null)
+                            <td>{{$userOrder->comment}}</td>
+                        @else
+                            <td> </td>
+                        @endif
                         <td>€ {{$userOrder->amount * $userOrder->dish->price}}</td>
                     </tr>
                 @endforeach
@@ -59,6 +65,11 @@
                         <td>{!!$customerOrder->dish->name!!}</td>
                         <td>€ {{$customerOrder->dish->price}}</td>
                         <td>{{$customerOrder->amount}}</td>
+                        @if($customerOrder->comment != null)
+                        <td>{{$customerOrder->comment}}</td>
+                        @else
+                            <td> </td>
+                        @endif
                         <td>€ {{$customerOrder->amount * $customerOrder->dish->price}}</td>
                     </tr>
                 @endforeach
