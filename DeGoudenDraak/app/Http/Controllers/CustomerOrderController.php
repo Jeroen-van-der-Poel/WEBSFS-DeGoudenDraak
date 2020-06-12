@@ -22,7 +22,7 @@ class CustomerOrderController extends Controller
         $waittime = 0;
         $iswaiting = false;
 
-        if($customer->dishes()->first() != null && $customer->dishes()->first()->pivot->customer_id == $customer->id && $customer->dishes()->first()->customers()->first()->tablenumber != null)
+        if($customer->dishes()->first() != null && $customer->dishes()->first()->pivot->customer_id == $customer->id)
         {
             $last = $customer->dishes()->orderByDesc('sale_date')->first()->pivot->sale_date;
             $between = Carbon::now()->diffInMinutes($last);
