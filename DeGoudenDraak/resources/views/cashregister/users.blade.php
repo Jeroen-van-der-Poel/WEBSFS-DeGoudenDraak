@@ -21,7 +21,7 @@
                         <div class="modal-dialog" role="document">
                             <div class="modal-content">
                                 <div class="modal-header">
-                                    <h5 class="modal-title" id="myModalLabel">Bericht wijzigen</h5>
+                                    <h5 class="modal-title" id="myModalLabel">Gebruiker aanmaken</h5>
                                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                         <span aria-hidden="true"></span>
                                         <span class="fas fa-window-close text-danger"></span>
@@ -46,8 +46,8 @@
                                 <div class="modal-footer">
                                     <div class="form-group col-sm-12 d-flex flex-row-reverse justify-content-between">
 
-                                        <button title="Verwijder het bericht inclusief de afbeeldingen." type="submit" class="btn btn-danger mr-2">
-                                            <i class="fas fa-trash"></i>
+                                        <button type="submit" class="btn btn-danger mr-2">
+                                            X
                                         </button>
 
                                     </div>

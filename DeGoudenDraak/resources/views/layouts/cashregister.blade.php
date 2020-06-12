@@ -56,9 +56,11 @@
 
                 <!-- Right Side Of Navbar -->
                 <ul class="navbar-nav ml-auto">
+                    @if(auth()->user() && auth()->user()->hasRole("Admin") || auth()->user()->hasRole("Cashier"))
                     <li class="nav-item">
                         <a class="nav-link" href="/cashregister/index" style="color: black">Kassa</a>
                     </li>
+                    @endif
                     <li class="nav-item">
                         <a class="nav-link" href="/cashregister/dishes" style="color: black">Gerechten</a>
                     </li>

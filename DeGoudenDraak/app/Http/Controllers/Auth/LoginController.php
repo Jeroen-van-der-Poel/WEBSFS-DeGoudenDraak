@@ -23,7 +23,7 @@ class LoginController extends Controller
 
     protected function authenticated()
     {
-        return redirect('/cashregister/index');
+        return redirect('/cashregister/dishes');
     }
 
     /**

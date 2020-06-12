@@ -15,10 +15,8 @@ use Illuminate\Support\Facades\Route;
 
 Auth::routes();
 
-Route::get('/', 'HomeController@index')->name('home');
-Route::get('/auth/unauthorized', 'UnauthorizedController@index');
-
 //home
+Route::get('/', 'HomeController@index')->name('home');
 Route::get('/home', 'HomeController@index')->name('home');
 Route::get('/menu', 'MenuController@index');
 Route::get('/pdf', 'PdfController@download');
@@ -26,6 +24,7 @@ Route::get('/news', 'NewsController@index');
 Route::get('/contact', 'ContactController@index');
 Route::get('/offers', 'OffersController@index');
 Route::get('/option', 'OrderController@index');
+Route::get('/auth/unauthorized', 'UnauthorizedController@index');
 
 //customer
 Route::get('/tablenumber', 'CustomerController@index');
@@ -44,11 +43,7 @@ Route::post('/home-order/order/{id}', 'HomeOrderController@store');
 Route::get('/home-order/{id}/confirmation', 'HomeOrderController@confirmation')->name('confirmation');
 
 //employee
-Route::get('/cashregister/index', 'CashRegisterController@index');
-Route::post('/cashregister/index', 'CashRegisterController@store');
 Route::get('/cashregister/dishes', 'DishesController@index');
-Route::patch('/FilterCashRegisterDishes','CashRegisterController@filterDishes');
-Route::patch('/FilterCashRegisterCategories','CashRegisterController@filterCategories');
 
 // Routes only able to be used by Admin
 Route::group(['middleware' => 'admin'], function() {
@@ -71,6 +66,8 @@ Route::group(['middleware' => 'waitress'], function() {
 
 // Routes only able to be used by Cashier
 Route::group(['middleware' => 'cashier'], function() {
+    Route::get('/cashregister/index', 'CashRegisterController@index');
+    Route::post('/cashregister/index', 'CashRegisterController@store');
     Route::get('/cashregister/sales', 'SalesController@index');
     Route::patch('/FilterSales', 'SalesController@filterSales');
 });

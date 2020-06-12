@@ -15,7 +15,7 @@
                         </button>
                     </a>
                 @else
-                    <a href="/cashregister/index">
+                    <a href="/cashregister/dishes">
                         <button class="btn btn-primary" style="height: 100px; width: 200px; max-height: 100px; max-width: 200px;">
                             Restaurant
                         </button>
