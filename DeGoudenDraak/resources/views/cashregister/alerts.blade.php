@@ -18,6 +18,7 @@
                 </tr>
                 </thead>
                 <tbody>
+                @if(!$alerts->isEmpty())
                 @foreach($alerts as $alert)
                     <tr>
                         <td>{{$alert->created_at}}</td>
@@ -32,6 +33,15 @@
                         </td>
                     </tr>
                 @endforeach
+                @else
+                    <h2 class="d-flex justify-content-center">Geen notificaties op dit moment</h2>
+                    <tr>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                @endif
                 </tbody>
             </table>
         </div>
