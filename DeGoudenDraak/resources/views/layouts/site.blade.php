@@ -161,7 +161,7 @@
                 <tr style="padding-top:50px">
                     <td width="50px">
                     </td>
-                    <td align="center" style='font-size: 5; border:1px solid black; background:floralwhite'> <br>
+                    <td align="center" style='border:1px solid black; background:floralwhite; height: 450px'> <br>
                         @yield("content")
                     </td>
                     <td width="50px">
