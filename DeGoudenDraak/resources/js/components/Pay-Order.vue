@@ -53,28 +53,34 @@
             },
             CustomerOrder() {
                 let order = localStorage.getItem('Order');
-                axios.post('/customer-order/order/' + this.customerId, {order1: order})
-                    .then(function (response) {
-                        window.location.reload();
-                    });
-                localStorage.clear();
+                if(order != null) {
+                    axios.post('/customer-order/order/' + this.customerId, {order1: order})
+                        .then(function (response) {
+                            window.location.reload();
+                        });
+                    localStorage.clear();
+                }
             },
             UserOrder() {
                 let order = localStorage.getItem('Order');
-                axios.post('/cashregister/index', {order1: order})
-                    .then(function (response) {
-                        window.location.reload();
-                    });
-                localStorage.clear();
+                if(order != null) {
+                    axios.post('/cashregister/index', {order1: order})
+                        .then(function (response) {
+                            window.location.reload();
+                        });
+                    localStorage.clear();
+                }
             },
             CustomerHomeOrder() {
                 let order = localStorage.getItem('Order');
-                localStorage.setItem("Customer", JSON.stringify(this.customerId));
-                axios.post('/home-order/order/' + this.customerId, {order1: order})
-                    .then(function (response) {
-                        window.location = "/home-order/" + JSON.parse(localStorage.getItem('Customer')) + "/confirmation";
-                        localStorage.clear();
-                    });
+                if(order != null){
+                    localStorage.setItem("Customer", JSON.stringify(this.customerId));
+                    axios.post('/home-order/order/' + this.customerId, {order1: order})
+                        .then(function (response) {
+                            window.location = "/home-order/" + JSON.parse(localStorage.getItem('Customer')) + "/confirmation";
+                            localStorage.clear();
+                        });
+                }
             }
         }
     }

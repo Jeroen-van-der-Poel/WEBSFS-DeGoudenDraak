@@ -2070,31 +2070,40 @@ __webpack_require__.r(__webpack_exports__);
     },
     CustomerOrder: function CustomerOrder() {
       var order = localStorage.getItem('Order');
-      axios.post('/customer-order/order/' + this.customerId, {
-        order1: order
-      }).then(function (response) {
-        window.location.reload();
-      });
-      localStorage.clear();
+
+      if (order != null) {
+        axios.post('/customer-order/order/' + this.customerId, {
+          order1: order
+        }).then(function (response) {
+          window.location.reload();
+        });
+        localStorage.clear();
+      }
     },
     UserOrder: function UserOrder() {
       var order = localStorage.getItem('Order');
-      axios.post('/cashregister/index', {
-        order1: order
-      }).then(function (response) {
-        window.location.reload();
-      });
-      localStorage.clear();
+
+      if (order != null) {
+        axios.post('/cashregister/index', {
+          order1: order
+        }).then(function (response) {
+          window.location.reload();
+        });
+        localStorage.clear();
+      }
     },
     CustomerHomeOrder: function CustomerHomeOrder() {
       var order = localStorage.getItem('Order');
-      localStorage.setItem("Customer", JSON.stringify(this.customerId));
-      axios.post('/home-order/order/' + this.customerId, {
-        order1: order
-      }).then(function (response) {
-        window.location = "/home-order/" + JSON.parse(localStorage.getItem('Customer')) + "/confirmation";
-        localStorage.clear();
-      });
+
+      if (order != null) {
+        localStorage.setItem("Customer", JSON.stringify(this.customerId));
+        axios.post('/home-order/order/' + this.customerId, {
+          order1: order
+        }).then(function (response) {
+          window.location = "/home-order/" + JSON.parse(localStorage.getItem('Customer')) + "/confirmation";
+          localStorage.clear();
+        });
+      }
     }
   }
 });
@@ -37756,7 +37765,7 @@ var render = function() {
           staticStyle: { "max-height": "35px", "min-height": "35px" },
           on: { click: _vm.PayOrder }
         },
-        [_vm._v(" Afrekenen")]
+        [_vm._v(" Bestellen")]
       )
     ])
   ])
