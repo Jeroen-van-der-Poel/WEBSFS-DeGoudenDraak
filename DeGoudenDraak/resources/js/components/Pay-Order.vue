@@ -2,7 +2,7 @@
     <div>
         <span>
             <button class="btn btn-danger" style="max-height: 35px; min-height: 35px"  @click="RemoveOrder"> Verwijderen</button>
-            <button class="btn btn-success" style="max-height: 35px; min-height: 35px"  @click="PayOrder"> Afrekenen</button>
+            <button class="btn btn-success" style="max-height: 35px; min-height: 35px"  @click="PayOrder"> Bestellen</button>
         </span>
     </div>
 </template>

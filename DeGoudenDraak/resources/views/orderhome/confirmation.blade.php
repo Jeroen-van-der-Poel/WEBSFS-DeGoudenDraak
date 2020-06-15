@@ -26,7 +26,7 @@
                 <h4>Gerechten</h4>
                 <ul>
                     @foreach($dishes as $dish)
-                        <li>Menu nummer: {{$dish->menu_number}}{{$dish->menu_addition}}, {{$dish->name}}</li>
+                        <li>Menu nummer: {{$dish->menu_number}}{{$dish->menu_addition}}, {{$dish->name}}, {{ $dish->pivot->amount }}x</li>
                     @endforeach
                 </ul>
             </div>
