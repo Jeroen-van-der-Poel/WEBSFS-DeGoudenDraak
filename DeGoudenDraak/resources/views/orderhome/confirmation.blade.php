@@ -3,6 +3,7 @@
 <head>
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+    <title>De Gouden Draak</title>
 </head>
 
 <body>
