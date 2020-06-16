@@ -11,13 +11,13 @@ class Dish extends Model
         return $this->BelongsToMany(User::class)->withPivot('amount', 'sale_date', 'comment');
     }
 
-    public function menu()
-    {
-        return $this->BelongsTo(Menu::class);
-    }
-
     public function customers()
     {
         return $this->BelongsToMany(Customer::class, 'customer_dish')->withPivot('amount', 'sale_date', 'comment', 'order_number', 'pickup_date');
+    }
+
+    public function category()
+    {
+        return $this->belongsTo(Category::class, 'dish_category');
     }
 }

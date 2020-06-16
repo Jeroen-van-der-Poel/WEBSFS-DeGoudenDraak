@@ -10,6 +10,7 @@
     <table class="blueTable">
         <thead>
         <tr>
+            <th style="text-align: center">Categorie</th>
             <th style="text-align: center">Menunummer</th>
             <th style="text-align: center">Naam</th>
             <th style="text-align: center">Beschrijving</th>
@@ -20,6 +21,7 @@
         <tbody>
         @foreach($dishes as $dish)
             <tr>
+                <td style="text-align: center">{{$dish->category->name}}</td>
                 <td style="text-align: center">{{$dish->menu_number}}{{$dish->menu_addition}}</td>
                 <td style="text-align: center">{!!$dish->name!!}</td>
                 <td style="text-align: center">{!!$dish->description!!}</td>
