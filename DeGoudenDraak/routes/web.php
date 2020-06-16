@@ -27,15 +27,8 @@ Route::get('/option', 'OrderController@index');
 Route::get('/auth/unauthorized', 'UnauthorizedController@index');
 
 //customer
-Route::get('/tablenumber', 'CustomerController@index');
-Route::post('/tablenumber', 'CustomerController@store');
 Route::get('/homeorder', 'CustomerController@homeindex');
 Route::post('/homeorder', 'CustomerController@homestore');
-
-//customer order
-Route::get('/customer-order/{id}', 'CustomerOrderController@index');
-Route::post('/customer-order/order/{id}', 'CustomerOrderController@store');
-Route::post('/customer-order/{id}', 'CustomerOrderController@help');
 
 //customer home order
 Route::get('/home-order/{id}', 'HomeOrderController@index');
@@ -44,6 +37,15 @@ Route::get('/home-order/{id}/confirmation', 'HomeOrderController@confirmation')-
 
 //employee
 Route::get('/cashregister/dishes', 'DishesController@index');
+
+// Routes only able to be used by Customer (and Admin)
+Route::group(['middleware' => 'customer'], function() {
+    Route::get('/tablenumber', 'CustomerController@index');
+    Route::post('/tablenumber', 'CustomerController@store');
+    Route::get('/customer-order/{id}', 'CustomerOrderController@index');
+    Route::post('/customer-order/order/{id}', 'CustomerOrderController@store');
+    Route::post('/customer-order/{id}', 'CustomerOrderController@help');
+});
 
 // Routes only able to be used by Admin
 Route::group(['middleware' => 'admin'], function() {
@@ -58,13 +60,13 @@ Route::group(['middleware' => 'admin'], function() {
     Route::get('/cashregister/users/give-waitress/{user}', 'UsersController@giveWaitress');
 });
 
-// Routes only able to be used by Waitress
+// Routes only able to be used by Waitress (and Admin)
 Route::group(['middleware' => 'waitress'], function() {
     Route::get('/cashregister/alerts', 'AlertsController@index');
     Route::put('/cashregister/alerts/finish-alert/{id}', 'AlertsController@update');
 });
 
-// Routes only able to be used by Cashier
+// Routes only able to be used by Cashier (and Admin)
 Route::group(['middleware' => 'cashier'], function() {
     Route::get('/cashregister/index', 'CashRegisterController@index');
     Route::post('/cashregister/index', 'CashRegisterController@store');

@@ -23,5 +23,9 @@ class RoleTableSeeder extends Seeder
         $role_company = new Role();
         $role_company->name = 'Waitress';
         $role_company->save();
+
+        $role_customer = new Role();
+        $role_customer->name = 'Customer';
+        $role_customer->save();
     }
 }

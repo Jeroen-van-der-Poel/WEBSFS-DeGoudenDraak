@@ -79,7 +79,7 @@
                         <a class="nav-link" href="/cashregister/users" style="color: black">Gebruikers</a>
                     </li>
                     @endif
-                    @if(auth()->user() && auth()->user()->hasRole("Admin"))
+                    @if(auth()->user() && auth()->user()->hasRole("Admin") || auth()->user()->hasRole("Customer"))
                         <li class="nav-item">
                             <a class="nav-link" href="/tablenumber" style="color: black">Tablet</a>
                         </li>
