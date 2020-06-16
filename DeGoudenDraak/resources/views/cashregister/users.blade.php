@@ -68,17 +68,10 @@
 
                         <tbody>
                         @foreach ($users as $user )
-
-{{--                            @if ($user->roles()->pluck('name')->implode(' ') == null)
-                            @else--}}
-
                                 <tr>
-
-
                                     <td>{{ $user->name }}</td>
                                     <td>{{ $user->email }}</td>
                                     <td>{{ $user->roles()->pluck('name')->implode(' ') }}</td>{{-- Retrieve array of roles associated to a user and convert to string --}}
-
                                     <td>
                                         @if($user->hasRole("Admin"))
                                             <a class="btn btn-primary" href="/cashregister/users/remove-admin/{{$user->id}}">Admin Weghalen</a>
@@ -95,24 +88,23 @@
                                         @else
                                             <a class="btn btn-primary" href="/cashregister/users/give-waitress/{{$user->id}}">Maak Serveerster</a>
                                         @endif
-                                        <form class="float-right d-flex pr-2" method="POST" action="/cashregister/users/{{$user->id}}">
-                                            {{ csrf_field() }}
-                                            {{ method_field('DELETE') }}
+                                        @if(!$user->hasRole("Customer"))
+                                            <form class="float-right d-flex pr-2" method="POST" action="/cashregister/users/{{$user->id}}">
+                                                {{ csrf_field() }}
+                                                {{ method_field('DELETE') }}
 
-                                            <div class="form-group d-flex float-right">
-                                                <button title="Verwijder de gebruiker" type="submit" class="btn btn-danger delete-user float-left">
-                                                    X
-                                                </button>
-                                            </div>
-                                        </form>
+                                                <div class="form-group d-flex float-right">
+                                                    <button title="Verwijder de gebruiker" type="submit" class="btn btn-danger delete-user float-left">
+                                                        X
+                                                    </button>
+                                                </div>
+                                            </form>
+                                        @endif
                                     </td>
                                 </tr>
-{{--                            @endif--}}
-
                         @endforeach
-
+                        
                         </tbody>
-
                     </table>
                 </div>
             </div>
