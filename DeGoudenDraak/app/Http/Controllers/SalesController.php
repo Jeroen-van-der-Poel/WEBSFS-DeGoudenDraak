@@ -15,8 +15,8 @@ class SalesController extends Controller
 
     public function index()
     {
-        $customerOrders = CustomerDish::all();
-        $userOrders = UserDish::all();
+        $customerOrders = CustomerDish::orderBy('sale_date', 'desc')->get();
+        $userOrders = UserDish::orderBy('sale_date', 'desc')->get();
 
         $revenue = $this->CountRevenue($customerOrders, $userOrders);
         $revenueBTW = $this->CountRevenueBTW($customerOrders, $userOrders);;
