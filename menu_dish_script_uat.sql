@@ -19,7 +19,7 @@ UPDATE dgd_uat.dishes as dishes
 SET dish_category =
 (
     SELECT dishtype.id 
-    FROM dgd_test.categories as dishtype
+    FROM dgd_uat.categories as dishtype
     WHERE dishtype.name = dishes.dishtype_name
 )
 WHERE dishes.id IS NOT NULL;
