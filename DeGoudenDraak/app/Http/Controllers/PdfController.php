@@ -11,7 +11,7 @@ class PdfController extends Controller
     public function download(){
         $dishes = Dish::all();
 
-        $fileName = 'Dish_List.pdf';
+        $fileName = 'Gouden_Draak_Menu.pdf';
         $mpdf = new \Mpdf\Mpdf([
             'margin_left' => 10,
             'margin_right' => 10,
