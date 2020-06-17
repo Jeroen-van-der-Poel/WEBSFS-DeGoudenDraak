@@ -1772,12 +1772,6 @@
             "pdf",
             "php",
             "utf-8"
-        ],
-        "funding": [
-            {
-                "url": "https://www.paypal.me/mpdf",
-                "type": "custom"
-            }
         ]
     },
     {
@@ -4153,12 +4147,6 @@
             "fpdf",
             "fpdi",
             "pdf"
-        ],
-        "funding": [
-            {
-                "url": "https://tidelift.com/funding/github/packagist/setasign/fpdi",
-                "type": "tidelift"
-            }
         ]
     },
     {
