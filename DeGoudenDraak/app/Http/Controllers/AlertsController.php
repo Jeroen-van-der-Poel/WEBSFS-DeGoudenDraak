@@ -21,7 +21,6 @@ class AlertsController extends Controller
         $customerHelp->finished = Carbon::now();
         $customerHelp->save();
 
-
         return redirect('/cashregister/alerts')->with('success', 'Notificatie is afgehandeld!');
     }
 }

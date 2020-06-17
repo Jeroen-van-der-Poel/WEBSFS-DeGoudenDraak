@@ -71,7 +71,6 @@ class HomeOrderController extends Controller
             $string .= $string2;
         }
 
-        //dd($dishes);
         return view('orderhome/confirmation', compact('customer', 'ordernumber', 'dishes', 'string'));
     }
 }
